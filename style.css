@@ -148,6 +148,7 @@ header .register ul li:hover ul li{
     color:#efdbcd;
     -webkit-transition : background-image 7s ease-in-out;
     -moz-transition: background-image 7s ease-in-out;
+    -o-transition: background-image 7s ease-in-out;
     transition: background-image 7s ease-in-out;
 }
 
