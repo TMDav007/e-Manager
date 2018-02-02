@@ -14,250 +14,268 @@
        
    </head>
    <body>
-        <header>
-                <div class = "container">
+      <header>
+            <div class = "container">
                     <div id = "branding">
-                         <h1><span class = "highlight">e</span>-Manager</h1>
+                        <h1><span class = "highlight">e</span>-Manager</h1>
                     </div>
-                    <nav>
-                         <div class = "navigator">
-                             <ul>
-                                 <li><a href = "index.html">Home</a></li>
-                                 <li><a href = "about.html">About</a></li>
-                                 <li><a href = "service.html">Service</a></li>
-                                 <li><a href = "contact.html">Contact us</a></li>
-                             </ul>
-                         </div>
-                      
-                         <div class = "register">
-                             <ul>
-                                  <li><a href = "addEvent.html">Sign-out</a></li>
-                                  <li class = "current"><a>Events <i class ="fa fa-angle-down"></i></a>
-                                      <ul>
-                                          <li><a href = "addEvent.html">Add-Event</a></li>
-                                          <li class = "current"><a href="viewEvent.html">View-Event</a></li>   
-                                      </ul>   
-                                  </li>
-                                 
-                             </ul>
-                         </div>
-                    </nav>  
-                </div>
-            </header>
-      
-            <section id="viewTable">
-                  <div class="container">
-                      <h1>View Event</h1>
-                      <table>
-                          <thead>
-                              <tr>
-                                  <td colspan="7" id="add_evt"><a>Add-Event</a></td>
-                              </tr>
-                              <tr>
-                                  <td>S/N</td>
-                                  <td>Event-Type</td>
-                                  <td>Event-Location</td>
-                                  <td>State</td>
-                                  <td>Date</td>
-                                  <td>Edit</td>
-                                  <td>Delete</td>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr> 
-                                  <td>1</td>
-                                  <td>Wedding</td>
-                                  <td>Oriental</td>
-                                  <td>Lagos</td>
-                                  <td>12/12/2018</td>
-                                  <td class="modal_evtView"><a class="fa">&#xf044</a></td>
-                                  <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
-                              </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td>Wedding</td>
-                                  <td>Oriental</td>
-                                  <td>Lagos</td>
-                                  <td>12/12/2018</td>
-                                  <td class="modal_evtView"><a class="fa">&#xf044</a></td>
-                                  <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td>Wedding</td>
-                                  <td>Oriental</td>
-                                  <td>Lagos</td>
-                                  <td>12/12/2018</td>
-                                  <td class="modal_evtView"><a class="fa">&#xf044</a></td>
-                                  <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
-                              </tr>
-                              <tr>
-                                  <td>4</td>
-                                  <td>Wedding</td>
-                                  <td>Oriental</td>
-                                  <td>Lagos</td>
-                                  <td>12/12/2018</td>
-                                  <td class="modal_evtView"><a class="fa">&#xf044</a></td>
-                                  <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-            </section>
-      
-            <!--Modal Section -->
-            <div id="edit">
-                  <section id="editbox_content">
-                      <span class="close">&times;</span>
-                      <div class = "container">
-                          <form>
-                              <fieldset><legend><h1>Edit-Event</h1></legend>
-                                  <label for="location">Location :  </label>
-                                  <select name="location">
-                                      <option value="lag" selected>Lagos</option>
-                                      <option value="ib">Ibadan</option>
-                                      <option value="abj">Abuja</option>
-                                  </select>
-                                  <br><br>
-                                  
-                                  <label for="event">Event-Center : </label>
-                                  <select name="event">
-                                      <option value="oriental">Oritental</option>
-                                      <option value="Eko">Eko-Suite</option>
-                                      <option value="ABC">ABC-Center</option>
-                                  </select>
-                                  <br><br>
-              
-                                  <label for="event">Event-type : </label>
-                                  <select name="event">
-                                      <option value="Wedding">Wedding</option>
-                                      <option value="Seminar">Seminar</option>
-                                      <option value="Conference">Conference</option>
-                                      <option value="Concert">Concert</option>
-                                      <option value="birthday">Birthday</option>
-                                      <option value="others">Others</option>
-                                  </select>
-                              
-              
-                                  <label for="others">Others:</label>
-                                  <input type="text" name="others" id="others"  placeholder="">
-                                  <br><br>
-              
-                                  <label for="date">Date:</label>
-                                  <input type="date" name="date" id="date"  placeholder="">
-                                  <br><br>
-              
-                                  <label for="">Duration: </label>
-                                  <select name="duration">
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                      <option value="6">6</option>
-                                      <option value="7">7</option>
-                                      <option value="8">8</option>
-                                      <option value="9">9</option>
-                                      <option value="10">10</option>
-                                  </select><span id="hour"> hour(s)</span>
-                                  <br><br>
-              
-                                  <label for="amount">Amount:</label>
-                                  <input type="text" name="amount" id="amount"  Value="#200,000">
-                                  <br><br>
-                                  <br><br>
-              
-                                  <button type="submit" id="addEvenBtn">Edit-Event</button>
-                              </fieldset>
-                          </form>
-                      </div>
-              </section>
-            </div>
-      
-            <div class="delEvent" id="delEvent">
-                <section id = "delEvent_content">
-                  <span class="close">&times;</span>
-                      <div class = "container">
-                          <p><i class="fa fa-exclamation-circle"></i> Are you sure you want to delete this event?</p>
-                          <div class="btn">
-                              <button>Delete</button>
-                              <button>Cancel</button>
-                          </div>
-                      </div>
-                </section>
-            </div>
-      
-            <div id="addEvt">
-                <section id ="addEvt_content">
-                    <span class ="close">&times;</span>
-                        <div class="container">
-                              <form>
-                                  <fieldset><legend><h1>Add Event</h1></legend>
-                                      <label for="location">Location :  </label>
-                                      <select name="location">
-                                          <option value="lag" selected>Lagos</option>
-                                          <option value="ib">Ibadan</option>
-                                          <option value="abj">Abuja</option>
-                                      </select>
-                                      <br><br>
-                                      
-                                      <label for="event">Event-Center : </label>
-                                      <select name="event">
-                                          <option value="oriental">Oritental</option>
-                                          <option value="Eko">Eko-Suite</option>
-                                          <option value="ABC">ABC-Center</option>
-                                      </select>
-                                      <br><br>
-                  
-                                      <label for="event">Event-type : </label>
-                                      <select name="event">
-                                          <option value="Wedding">Wedding</option>
-                                          <option value="Seminar">Seminar</option>
-                                          <option value="Conference">Conference</option>
-                                          <option value="Concert">Concert</option>
-                                          <option value="birthday">Birthday</option>
-                                          <option value="others">Others</option>
-                                      </select>
-                                  
-                  
-                                      <label for="others">Others:</label>
-                                      <input type="text" name="others" id="others"  placeholder="">
-                                      <br><br>
-                  
-                                      <label for="date">Date:</label>
-                                      <input type="date" name="date" id="date"  placeholder="">
-                                      <br><br>
-                  
-                                      <label for="">Duration: </label>
-                                      <select name="duration">
-                                          <option value="1">1</option>
-                                          <option value="2">2</option>
-                                          <option value="3">3</option>
-                                          <option value="4">4</option>
-                                          <option value="5">5</option>
-                                          <option value="6">6</option>
-                                          <option value="7">7</option>
-                                          <option value="8">8</option>
-                                          <option value="9">9</option>
-                                          <option value="10">10</option>
-                                      </select><span id="hour"> hour(s)</span>
-                                      <br><br>
-                  
-                                      <label for="amount">Amount:</label>
-                                      <input type="text" name="amount" id="amount"  Value="#200,000">
-                                      <br><br>
-                                      <br><br>
-                  
-                                      <button type="submit" id="addEvenBtn">Add Event</button>
-                                  </fieldset>
-                              </form>
+                    <nav id= "navbar1">
+                        <div class = "navigator">
+                            <ul>
+                                <li><a href = "index.html">Home</a></li>
+                                <li><a href = "about.html">About us</a></li>
+                                <li><a href = "service.html">Service</a></li>
+                                <li><a href = "contact.html">Contact us</a></li>
+                            </ul>
                         </div>
-                </section>
+                        <div class = "register">
+                            <ul>
+                                <li><a href = "addEvent.html">Sign-out</a></li>
+                                <li class = "current"><a>Centers <i class ="fa fa-angle-down"></i></a>
+                                    <ul>
+                                        <li><a href = "addEvent.html">Add-Centers</a></li>
+                                        <li class = "current"><a href="viewEvent.html">View-Events</a></li>   
+                                    </ul>   
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+        
+                    <nav id="navbar2">
+                        <div id="sidebar">
+                            <div id = "sidebar_content">
+                                <ul>
+                                    <li class = "current"><a href = "index.html">Home</a></li>
+                                    <li><a href = "about.html">About us</a></li>
+                                    <li><a href = "service.html">Service</a></li>
+                                    <li><a href = "contact.html">Contact us</a></li>
+                                    <li class = "current"><a href="viewEvent.html">View-Events</a></li>   
+                                    <li><a href = "logout.html">Log-out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="togglebtn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>  
+                </nav>    
             </div>
+      </header>
+
+      <section id="viewTable">
+            <div class="container">
+                <h1>View Event</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <td colspan="7" id="add_evt"><a>Add-Event</a></td>
+                        </tr>
+                        <tr>
+                            <td>S/N</td>
+                            <td>Event-Type</td>
+                            <td>Event-Location</td>
+                            <td>State</td>
+                            <td>Date</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr> 
+                            <td>1</td>
+                            <td>Wedding</td>
+                            <td>Oriental</td>
+                            <td>Lagos</td>
+                            <td>12/12/2018</td>
+                            <td class="modal_evtView"><a class="fa">&#xf044</a></td>
+                            <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Wedding</td>
+                            <td>Oriental</td>
+                            <td>Lagos</td>
+                            <td>12/12/2018</td>
+                            <td class="modal_evtView"><a class="fa">&#xf044</a></td>
+                            <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Wedding</td>
+                            <td>Oriental</td>
+                            <td>Lagos</td>
+                            <td>12/12/2018</td>
+                            <td class="modal_evtView"><a class="fa">&#xf044</a></td>
+                            <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Wedding</td>
+                            <td>Oriental</td>
+                            <td>Lagos</td>
+                            <td>12/12/2018</td>
+                            <td class="modal_evtView"><a class="fa">&#xf044</a></td>
+                            <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+      </section>
+
+      <!--Modal Section -->
+      <div id="edit">
+            <section id="editbox_content">
+                <span class="close">&times;</span>
+                <div class = "container">
+                    <form>
+                        <fieldset><legend><h1>Edit-Event</h1></legend>
+                            <label for="location">Location :  </label>
+                            <select name="location">
+                                <option value="lag" selected>Lagos</option>
+                                <option value="ib">Ibadan</option>
+                                <option value="abj">Abuja</option>
+                            </select>
+                            <br><br>
+                            
+                            <label for="event">Event-Center : </label>
+                            <select name="event">
+                                <option value="oriental">Oritental</option>
+                                <option value="Eko">Eko-Suite</option>
+                                <option value="ABC">ABC-Center</option>
+                            </select>
+                            <br><br>
+        
+                            <label for="event">Event-type : </label>
+                            <select name="event">
+                                <option value="Wedding">Wedding</option>
+                                <option value="Seminar">Seminar</option>
+                                <option value="Conference">Conference</option>
+                                <option value="Concert">Concert</option>
+                                <option value="birthday">Birthday</option>
+                                <option value="others">Others</option>
+                            </select>
+                        
+        
+                            <label for="others">Others:</label>
+                            <input type="text" name="others" id="others"  placeholder="">
+                            <br><br>
+        
+                            <label for="date">Date:</label>
+                            <input type="date" name="date" id="date"  placeholder="">
+                            <br><br>
+        
+                            <label for="">Duration: </label>
+                            <select name="duration">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select><span id="hour"> hour(s)</span>
+                            <br><br>
+        
+                            <label for="amount">Amount:</label>
+                            <input type="text" name="amount" id="amount"  Value="#200,000">
+                            <br><br>
+                            <br><br>
+        
+                            <button type="submit" id="addEvenBtn">Edit-Event</button>
+                        </fieldset>
+                    </form>
+                </div>
+        </section>
+      </div>
+
+      <div class="delEvent" id="delEvent">
+          <section id = "delEvent_content">
+            <span class="close">&times;</span>
+                <div class = "container">
+                    <p><i class="fa fa-exclamation-circle"></i> Are you sure you want to delete this event?</p>
+                    <div class="btn">
+                        <button>Delete</button>
+                        <button>Cancel</button>
+                    </div>
+                </div>
+          </section>
+      </div>
+
+      <div id="addEvt">
+          <section id ="addEvt_content">
+              <span class ="close">&times;</span>
+                  <div class="container">
+                        <form>
+                            <fieldset><legend><h1>Add Event</h1></legend>
+                                <label for="location">Location :  </label>
+                                <select name="location">
+                                    <option value="lag" selected>Lagos</option>
+                                    <option value="ib">Ibadan</option>
+                                    <option value="abj">Abuja</option>
+                                </select>
+                                <br><br>
+                                
+                                <label for="event">Event-Center : </label>
+                                <select name="event">
+                                    <option value="oriental">Oritental</option>
+                                    <option value="Eko">Eko-Suite</option>
+                                    <option value="ABC">ABC-Center</option>
+                                </select>
+                                <br><br>
             
-            <footer>
-                  <p>&copy; 2017 TmD </p>
-           </footer>
-           <script src="script/addEventScript.js"></script>
-              </body>
-          </html>
+                                <label for="event">Event-type : </label>
+                                <select name="event">
+                                    <option value="Wedding">Wedding</option>
+                                    <option value="Seminar">Seminar</option>
+                                    <option value="Conference">Conference</option>
+                                    <option value="Concert">Concert</option>
+                                    <option value="birthday">Birthday</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            
+            
+                                <label for="others">Others:</label>
+                                <input type="text" name="others" id="others"  placeholder="">
+                                <br><br>
+            
+                                <label for="date">Date:</label>
+                                <input type="date" name="date" id="date"  placeholder="">
+                                <br><br>
+            
+                                <label for="">Duration: </label>
+                                <select name="duration">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select><span id="hour"> hour(s)</span>
+                                <br><br>
+            
+                                <label for="amount">Amount:</label>
+                                <input type="text" name="amount" id="amount"  Value="#200,000">
+                                <br><br>
+                                <br><br>
+            
+                                <button type="submit" id="addEvenBtn">Add Event</button>
+                            </fieldset>
+                        </form>
+                  </div>
+          </section>
+      </div>
+      
+      <footer>
+            <p>&copy; 2017 TmD </p>
+     </footer>
+     <script src="script/addEventScript.js"></script>
+        </body>
+    </html>
