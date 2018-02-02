@@ -97,7 +97,7 @@ header #branding h1{
 
 header nav .navigator{
     position:relative;
-    left: 7em;
+    left: 5%;
     width: 40%;
    margin: 20px auto;
 }
@@ -112,10 +112,12 @@ header a:hover{
     font-weight: bold;
     border-bottom: rgba(255, 255, 255, 0.199) 1px solid;
 }
+/* Navbars */
+nav #navbar2, #sidebar_content{
+    display:none;
+}
 
 /*Modify-Event Drop Down Menu */
-
-
 header .register ul{
     margin:0px;
     padding:0px;
@@ -124,7 +126,7 @@ header .register ul{
 
 header .register ul li{
    float: right;
-   width: 70px;
+   width: 8%;
    text-align: center;
     
 }
@@ -142,7 +144,7 @@ header .register ul li:hover ul li{
     min-height: 600px;
     position: relative;
     top: 6em;
-    background:  no-repeat 0px ;
+    background:  no-repeat 50% 50% ;
     background-size: cover;
     text-align: center;
     color:#efdbcd;
@@ -173,10 +175,12 @@ header .register ul li:hover ul li{
     background: transparent;
     width: 200px;
     height: 60px;
-    padding:15px 0;
+    padding:15px;
     margin: 100px auto;
     color: #fff;
     opacity: 1;
+    cursor:pointer;
+    transition : all 0.5s;
 }
 
 #intro h4:hover{
@@ -828,10 +832,9 @@ footer p{
         font-size:13px;
     }
     
-
     header nav .navigator{
         position:relative;
-        left: 3rem;
+        left: 2rem;
         width: 20rem;
        margin: 20px auto;
     }
@@ -847,12 +850,37 @@ footer p{
 
     header .register ul li{
         position:relative;
-        left:5rem;
+        left:10%;
         float: left;
         width: 70px;  
     }
+}
+@media (max-width:590px){
+    header nav .navigator{
+        position:relative;
+        left: 1rem;
+        width: 20rem;
+       margin: 20px auto;
+    }
 
-@media (max-width:480px){
+    header div#branding{
+        font-size:15px;
+    }
+
+    header .navigator li{
+        float: left;
+        padding: 0 5px;
+    } 
+
+    header .register ul li{
+        position:relative;
+        left:5%;
+        float: left;
+        width: 50px;  
+    }
+}
+
+@media (max-width:518px){
     
     /* Global */
     .container{
@@ -861,28 +889,162 @@ footer p{
         overflow:hidden;
     }
 
+    header{
+        background-color: transparent;
+        color:rgb(46, 6, 12);
+    }
+
     header div#branding{
         float:none;
         width:100%;
-        text-align: center;
-        
+        text-align: center;  
     }
   
-    header .navigator,
-    header .navigator ul{
-        float: none;
-        width:100%;
-    } 
-
-    header .register{
-       float:none;
-       width:100%;
-       text-align:center;
+    /* nav bar */
+    .navigator, .register{
+        display:none;
     }
 
+    nav #navbar2, #sidebar_content{
+        display:block;
+    }
 
+    nav #sidebar{
+        display: none;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        overflow:auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+   header #sidebar_content{
+       position: absolute;
+       top:0px;
+       left: 0px;
+       width:200px;
+       height:100vh;
+       z-index: 3;
+       background: #1f080d;
+       text-align: center;
+       -webkit-transform:left;
+       -moz-transform: left;
+       -o-transform:left;
+       transform-origin: left;
+       -webkit-transform:perspective(1200px) rotateY(90deg);
+       -moz-transform:perspective(1200px) rotateY(90deg);
+       -o-transform:perspective(1200px) rotateY(90deg);
+       transform: perspective(1200px) rotateY(90deg);
+       -webkit-transition: all 5s;
+       -moz-transition: all 5s;
+       -o-transition: all 5s;
+       transition: all 5s;
+   }
+   header nav #sidebar_content.active{
+       -webkit-transform:perspective(1200px) rotateY(0deg);
+       -moz-transform:perspective(1200px) rotateY(0deg);
+       -o-transform:perspective(1200px) rotateY(0deg);
+        transform: perspective(1200px) rotateY(0deg);
+}
 
-   
+   /* header branding */
+   header div#branding{
+    font-size: 18px;
+    position:relative;
+    right: 2em;
+    top: 0.3em;
 }
-    
+    header #branding h1{
+    left: 1.3em;
+    }
+
+   header nav #sidebar ul{
+    list-style-type: none;
+    padding: 0;
+   }
+
+   header nav #sidebar_content ul li{
+    position: relative;
+    right: 0;
+    left:0;
+    font-size: 18px;
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    border-bottom: 1px solid #251217;
+    line-height: 30px;
+   }
+   header #togglebtn{
+       position: absolute;
+       left:23px;
+       top:22px;
+       z-index: 4;
+       cursor: pointer;
+       -webkit-transition:left .2s linear 0s,transform .3s ease .1s;
+       -moz-transition:left .2s linear 0s,transform .3s ease .1s;
+       -o-transition:left .2s linear 0s,transform .3s ease .1s;
+       transition:left .2s linear 0s,transform .3s ease .1s;
+   }
+
+   header #togglebtn.active{
+       left:230px;
+       -webkit-transform: rotate(360deg);
+       -moz-transform: rotate(360deg);
+       -o-transform: rotate(360deg);
+       transform: rotate(360deg);
+   }
+
+   header #togglebtn span{
+       position: relative;
+       top:0px;
+       display:block;
+       background: #1f080d;
+       width:30px;
+       height:5px;
+       margin:5px 0px;
+       cursor:pointer;
+       -webkit-transition: transform .3s ease 2s;
+       -moz-transition:transform .3s ease 2s;
+       -o-transition: transform .3s ease 2s;
+       transition:transform .3s ease .2s;
+   }
+
+   header #togglebtn.active span:nth-child(1){
+       top:10px;
+       -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+       -o-transform: rotate(45deg);
+       transform: rotate(45deg);
+   }
+
+   header #togglebtn.active span:nth-child(2){
+        opacity: 0;
+    }
+    header #togglebtn.active span:nth-child(3){
+        top:-10px;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+  
+    /*Intro */
+#intro{
+    min-height: 200px;
+    height: 600px;
+    position: relative;
+    top: 0em;
+    background:  no-repeat 50% 50% ;
+    background-size: cover;
+    text-align: center;
+    color:#efdbcd;
+    -webkit-transition : background-image 7s ease-in-out;
+    -moz-transition: background-image 7s ease-in-out;
+    -o-transition: background-image 7s ease-in-out;
+    transition: background-image 7s ease-in-out;
 }
+
+}
+  
