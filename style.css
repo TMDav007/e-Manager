@@ -275,19 +275,26 @@ header .register ul li:hover ul li{
     left:-8px;
     bottom:1em;
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: 2% auto;
     border: 1px solid #888;
-    width: 40%;
+    width: 50%;
     height:60%;
 }
 
 
+
 .login_content #log{
+    position: relative;
     text-align: left;
-    margin-top: 3em;
-    font-size: 30px;
+    top: -4em;
+    font-size: 25px;
     border-bottom: #756c5b7e 1px solid;
     font-family: Arial,Helvetica,sans-serif;
+}
+
+.login_content form{
+    position: relative;
+    top:-7em;
 }
 
 .close{
@@ -307,18 +314,18 @@ header .register ul li:hover ul li{
 }
 .login_content input[type="checkbox"]{
     position: relative;
-    right: 11em;
+    right: 35%;
 }
 
 .login_content span#remember{
     position: relative;
-    right: 8.5em;
+    right: 32%;
     color: #0f0a0ae1;
 }
 
 .login_content button, .login_content a{
     position: relative;
-    right:5.8em;
+    right:27%;
 }
 
 #edit{
@@ -796,6 +803,27 @@ footer p{
         float: left;
         width: 70px;  
     }
+    .login_content{
+        margin: 10% auto;
+        width: 50%;
+        height:60%;
+    }
+    
+    .login_content input[type="checkbox"]{
+        right: 29%;
+    }
+    
+    .login_content span#remember{
+        position: relative;
+        right: 27%;
+        color: #0f0a0ae1;
+        font-size: 14px;
+    }
+    .login_content button, .login_content a{
+        position: relative;
+        right:18%;
+    }
+    
 }
 
 @media (max-width:865px){
@@ -878,6 +906,46 @@ footer p{
     min-height: 190px;
     margin-bottom: -8rem;
 }
+
+/*modal*/
+.login_content{
+    margin: 5em auto;
+    width: 70%;
+    height:60%;
+}
+
+.login_content #log{
+    top: -2.8em;
+}
+
+
+.login_content input[type="checkbox"]{
+    right: 33%;
+}
+
+.login_content span#remember{
+    position: relative;
+    right: 31%;
+    color: #0f0a0ae1;
+    font-size: 14px;
+}
+.login_content button, .login_content a{
+    position: relative;
+    right:25%;
+}
+
+/*inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"]{
+   font-size: 14px;
+}
+
+button{
+    font-size: 14px;
+    padding: 3px 6px;
+}
 }
 @media (max-width:590px){
     header nav .navigator{
@@ -945,6 +1013,44 @@ footer p{
     min-height: 190px;
     margin-bottom: -8rem;
 }
+.login_content{
+    margin: 10% auto;
+    width: 70%;
+    height:60%;
+}
+
+.login_content #log{
+    top: -2.8em;
+}
+
+
+.login_content input[type="checkbox"]{
+    right: 30%;
+}
+
+.login_content span#remember{
+    position: relative;
+    right: 28%;
+    color: #0f0a0ae1;
+    font-size: 14px;
+}
+.login_content button, .login_content a{
+    position: relative;
+    right:20%;
+}
+
+/*inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"]{
+   font-size: 14px;
+}
+
+button{
+    font-size: 14px;
+}
+
 }
 
 @media (max-width:518px){
@@ -1112,4 +1218,62 @@ footer p{
     min-height: 190px;
     margin-bottom: -8rem;
 }
+
+/*login and signup */
+#login, #signup {
+    top:7em;
+    width :70%;   
+}
+
+#login h1,#signup h1{
+    font-size: 25px;
+}
+
+#login span#remember{
+    font-size: 14px;
+}
+
+/* modal */
+.login_content span#remember{
+    position:relative;
+    font-size: 14px;
+}
+
+
+.login_content{
+    width: 90%;
+    height:60%;
+    left: -1px;
+}
+
+.login_content input[type="checkbox"]{
+    position: relative;
+    right: 26%;
+}
+
+.login_content span#remember{
+    position: relative;
+    right: 24%;
+    color: #0f0a0ae1;
+}
+
+.login_content button, .login_content a{
+    position: relative;
+    right:10%;
+}
+
+
+/*inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"]{
+   font-size: 14px;
+}
+
+button{
+    font-size: 14px;
+    padding:2px 5px;
+}
+
 }
