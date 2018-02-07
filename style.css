@@ -97,7 +97,7 @@ header #branding h1{
 
 header nav .navigator{
     position:relative;
-    left: 7em;
+    left: 5%;
     width: 40%;
    margin: 20px auto;
 }
@@ -112,10 +112,12 @@ header a:hover{
     font-weight: bold;
     border-bottom: rgba(255, 255, 255, 0.199) 1px solid;
 }
+/* Navbars */
+nav #navbar2, #sidebar_content{
+    display:none;
+}
 
 /*Modify-Event Drop Down Menu */
-
-
 header .register ul{
     margin:0px;
     padding:0px;
@@ -124,7 +126,7 @@ header .register ul{
 
 header .register ul li{
    float: right;
-   width: 70px;
+   width: 8%;
    text-align: center;
     
 }
@@ -142,7 +144,7 @@ header .register ul li:hover ul li{
     min-height: 600px;
     position: relative;
     top: 6em;
-    background:  no-repeat 0px ;
+    background:  no-repeat 50% 50% ;
     background-size: cover;
     text-align: center;
     color:#efdbcd;
@@ -155,7 +157,7 @@ header .register ul li:hover ul li{
 
 #intro h1{
     font-family: 'Acme', cursive;
-    font-size: 55px;
+    font-size: 400%;
     margin-top:150px;
     margin-bottom: 10px;
     color:#dcd5d5;
@@ -173,10 +175,12 @@ header .register ul li:hover ul li{
     background: transparent;
     width: 200px;
     height: 60px;
-    padding:15px 0;
+    padding:15px;
     margin: 100px auto;
     color: #fff;
     opacity: 1;
+    cursor:pointer;
+    transition : all 0.5s;
 }
 
 #intro h4:hover{
@@ -184,28 +188,6 @@ header .register ul li:hover ul li{
     opacity:0.5
 }
 
-
-#events{
-    margin-top:40px;
-    color: #2c1618;
-    text-align: center;
-}
-
-#events .box{
-    float:left;
-    text-align: center;
-    width:30%;
-    padding: 10px;
-}
-
-#events img{
-    width:300px;
-    height:300px;
-}
-
-#events h1{
-    font-size: 40px;
-}
 
 #about{
     margin-top: 140px;
@@ -234,7 +216,7 @@ header .register ul li:hover ul li{
 #about p{
     color: #944b52;
     margin: 10px auto;
-    width: 800px;
+    width: 100%;
 }   
 
 
@@ -293,19 +275,26 @@ header .register ul li:hover ul li{
     left:-8px;
     bottom:1em;
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: 2% auto;
     border: 1px solid #888;
-    width: 40%;
+    width: 50%;
     height:60%;
 }
 
 
+
 .login_content #log{
+    position: relative;
     text-align: left;
-    margin-top: 3em;
-    font-size: 30px;
+    top: -4em;
+    font-size: 25px;
     border-bottom: #756c5b7e 1px solid;
     font-family: Arial,Helvetica,sans-serif;
+}
+
+.login_content form{
+    position: relative;
+    top:-7em;
 }
 
 .close{
@@ -325,18 +314,18 @@ header .register ul li:hover ul li{
 }
 .login_content input[type="checkbox"]{
     position: relative;
-    right: 11em;
+    right: 35%;
 }
 
 .login_content span#remember{
     position: relative;
-    right: 8.5em;
+    right: 32%;
     color: #0f0a0ae1;
 }
 
 .login_content button, .login_content a{
     position: relative;
-    right:5.8em;
+    right:27%;
 }
 
 #edit{
@@ -604,17 +593,22 @@ header .register ul li:hover ul li{
 
 /*Service */
 #service {
-    margin-top:140px;
-    margin-bottom: -130px;
-    min-height: 800px;
+    margin-top:5%;
+    margin-bottom: -8.5rem;
+    min-height: 600px;
+    max-width: 100%;
     position: relative;
     top: 6em;
-    background:url("image/service_background.jpg")  no-repeat 0px 100px ;
     background-size: cover;
+}
+
+#service h1{
+    position: relative;
 }
 
 #service .container{
     width:100%;
+   
 }
 
 #service .service_image{
@@ -625,8 +619,7 @@ header .register ul li:hover ul li{
 }
 #service img{
     width: 100%;
-    height:500px;
-    margin:-3px -3px;
+    height:50%;
     padding:0;
 }
 
@@ -810,6 +803,27 @@ footer p{
         float: left;
         width: 70px;  
     }
+    .login_content{
+        margin: 10% auto;
+        width: 50%;
+        height:60%;
+    }
+    
+    .login_content input[type="checkbox"]{
+        right: 29%;
+    }
+    
+    .login_content span#remember{
+        position: relative;
+        right: 27%;
+        color: #0f0a0ae1;
+        font-size: 14px;
+    }
+    .login_content button, .login_content a{
+        position: relative;
+        right:18%;
+    }
+    
 }
 
 @media (max-width:865px){
@@ -828,10 +842,9 @@ footer p{
         font-size:13px;
     }
     
-
     header nav .navigator{
         position:relative;
-        left: 3rem;
+        left: 2rem;
         width: 20rem;
        margin: 20px auto;
     }
@@ -847,12 +860,200 @@ footer p{
 
     header .register ul li{
         position:relative;
-        left:5rem;
+        left:10%;
         float: left;
         width: 70px;  
     }
+     /*Intro */
+#intro{
+    min-height: 200px;
+    height: 600px;
 
-@media (max-width:480px){
+}
+
+#intro h1{
+    font-size: 400%;
+    margin-top:3em;
+    margin-bottom: 1.5em;
+}
+#intro p{
+    font-size: 23px;
+}
+
+#about h1,#service h1{
+    font-size: 23px;
+}
+#about .container{
+    width: 90%;
+}
+#about .about_content{
+    position: relative;
+    bottom:0em;
+    padding: 0 5px;
+}
+
+#about hr,#service hr{
+    width: 70px;
+}
+
+#about p{
+    font-size: 13px;
+    word-spacing: 5px;
+    margin: 17px auto;
+}
+
+#service{
+    min-height: 190px;
+    margin-bottom: -8rem;
+}
+
+/*modal*/
+.login_content{
+    margin: 5em auto;
+    width: 70%;
+    height:60%;
+}
+
+.login_content #log{
+    top: -2.8em;
+}
+
+
+.login_content input[type="checkbox"]{
+    right: 33%;
+}
+
+.login_content span#remember{
+    position: relative;
+    right: 31%;
+    color: #0f0a0ae1;
+    font-size: 14px;
+}
+.login_content button, .login_content a{
+    position: relative;
+    right:25%;
+}
+
+/*inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"]{
+   font-size: 14px;
+}
+
+button{
+    font-size: 14px;
+    padding: 3px 6px;
+}
+}
+@media (max-width:590px){
+    header nav .navigator{
+        position:relative;
+        left: 1rem;
+        width: 20rem;
+       margin: 20px auto;
+    }
+
+    header div#branding{
+        font-size:15px;
+    }
+
+    header .navigator li{
+        float: left;
+        padding: 0 5px;
+    } 
+
+    header .register ul li{
+        position:relative;
+        left:5%;
+        float: left;
+        width: 50px;  
+    }
+
+     /*Intro */
+#intro{
+    min-height: 200px;
+    height: 600px;
+
+}
+
+#intro h1{
+    font-size: 350%;
+    margin-top:3.5em;
+    margin-bottom: 1.5em;
+}
+#intro p{
+    font-size: 22px;
+}
+
+#about h1,#service h1{
+    font-size: 26px;
+}
+#about .container{
+    width: 80%;
+}
+#about .about_content{
+    position: relative;
+    bottom:0em;
+    padding: 0 5px;
+}
+
+#about hr,#service hr{
+    width: 65px;
+}
+
+#about p{
+    font-size: 11px;
+    word-spacing: 5px;
+    margin: 15px auto;
+}
+
+#service{
+    min-height: 190px;
+    margin-bottom: -8rem;
+}
+.login_content{
+    margin: 10% auto;
+    width: 70%;
+    height:60%;
+}
+
+.login_content #log{
+    top: -2.8em;
+}
+
+
+.login_content input[type="checkbox"]{
+    right: 30%;
+}
+
+.login_content span#remember{
+    position: relative;
+    right: 28%;
+    color: #0f0a0ae1;
+    font-size: 14px;
+}
+.login_content button, .login_content a{
+    position: relative;
+    right:20%;
+}
+
+/*inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"]{
+   font-size: 14px;
+}
+
+button{
+    font-size: 14px;
+}
+
+}
+
+@media (max-width:518px){
     
     /* Global */
     .container{
@@ -861,28 +1062,218 @@ footer p{
         overflow:hidden;
     }
 
+    header{
+        background-color: transparent;
+        color:rgb(46, 6, 12);
+    }
+
     header div#branding{
         float:none;
         width:100%;
-        text-align: center;
-        
+        text-align: center;  
     }
   
-    header .navigator,
-    header .navigator ul{
-        float: none;
-        width:100%;
-    } 
-
-    header .register{
-       float:none;
-       width:100%;
-       text-align:center;
+    /* nav bar */
+    .navigator, .register{
+        display:none;
     }
 
+    nav #navbar2, #sidebar_content{
+        display:block;
+    }
 
-
-   
+    nav #sidebar{
+        display: none;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        overflow:auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+   header #sidebar_content{
+       position: absolute;
+       top:0px;
+       left: 0px;
+       width:200px;
+       height:100vh;
+       z-index: 3;
+       background: #1f080d;
+       text-align: center;
+       transform-origin: left;
+       transform: perspective(1200px) rotateY(90deg);
+       transition: all 5s;
+   }
+   header nav #sidebar_content.active{
+    transform: perspective(1200px) rotateY(0deg);
 }
-    
+
+   /* header branding */
+   header div#branding{
+    font-size: 18px;
+    position:relative;
+    right: 1.5em;
+    top: 0.3em;
+}
+    header #branding h1{
+    left: 1.3em;
+    }
+
+   header nav #sidebar ul{
+    list-style-type: none;
+    padding: 0;
+   }
+
+   header nav #sidebar_content ul li{
+    position: relative;
+    right: 0;
+    left:0;
+    font-size: 18px;
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    border-bottom: 1px solid #251217;
+    line-height: 30px;
+   }
+   header #togglebtn{
+       position: absolute;
+       left:23px;
+       top:22px;
+       z-index: 4;
+       cursor: pointer;
+       transition:left .2s linear 0s,transform .3s ease .1s;
+   }
+
+   header #togglebtn.active{
+       left:230px;
+       transform: rotate(360deg);
+   }
+
+   header #togglebtn span{
+       position: relative;
+       top:0px;
+       display:block;
+       background: #1f080d;
+       width:30px;
+       height:5px;
+       margin:5px 0px;
+       cursor:pointer;
+       transition:transform .3s ease .2s;
+   }
+
+   header #togglebtn.active span:nth-child(1){
+       top:10px;
+       transform: rotate(45deg);
+   }
+
+   header #togglebtn.active span:nth-child(2){
+        opacity: 0;
+    }
+    header #togglebtn.active span:nth-child(3){
+        top:-10px;
+        transform: rotate(-45deg);
+    }
+  
+    /*Intro */
+#intro{
+    min-height: 200px;
+    height: 600px;
+
+}
+
+#intro h1{
+    font-size: 300%;
+    margin-top:3em;
+    margin-bottom: 1.5em;
+}
+#intro p{
+    font-size: 20px;
+}
+
+#about h1,#service h1{
+    font-size: 20px;
+}
+#about .container{
+    width: 80%;
+}
+#about .about_content{
+    position: relative;
+    bottom:0em;
+    padding: 0 5px;
+}
+
+#about hr,#service hr{
+    width: 65px;
+}
+
+#about p{
+    font-size: 10px;
+    word-spacing: 5px;
+    margin: 10px auto;
+}
+
+#service{
+    min-height: 190px;
+    margin-bottom: -8rem;
+}
+
+/*login and signup */
+#login, #signup {
+    top:7em;
+    width :70%;   
+}
+
+#login h1,#signup h1{
+    font-size: 25px;
+}
+
+#login span#remember{
+    font-size: 14px;
+}
+
+/* modal */
+.login_content span#remember{
+    position:relative;
+    font-size: 14px;
+}
+
+
+.login_content{
+    width: 90%;
+    height:60%;
+    left: -1px;
+}
+
+.login_content input[type="checkbox"]{
+    position: relative;
+    right: 26%;
+}
+
+.login_content span#remember{
+    position: relative;
+    right: 24%;
+    color: #0f0a0ae1;
+}
+
+.login_content button, .login_content a{
+    position: relative;
+    right:10%;
+}
+
+
+/*inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"]{
+   font-size: 14px;
+}
+
+button{
+    font-size: 14px;
+    padding:2px 5px;
+}
+
 }
