@@ -4,18 +4,23 @@ let span = document.getElementsByClassName("close")[0];
 let dropdownbtn= document.getElementsByClassName("modifyEvtDrop");
 
 /* Modal */
-//btn.onclick = function(){ modal.style.display = "block";
-//}
 $("#modal_login").on("click", function(){
     modal.style.display = "block";
 });
 
-//span.onclick = function(){
-  //  modal.style.display = "none";
-//}
 $(".close").on("click", function(){
     modal.style.display = "none";
 });
+
+$("#togglebtn").on("click", function(){
+    toggleSideBar(this);
+    if ($("#sidebar").css("display") === "none"){
+     document.getElementById("sidebar").style.display= "block";
+    }
+    else{
+     document.getElementById("sidebar").style.display= "none";
+    }
+ });
 
 
 window.onclick = function(event){
@@ -61,4 +66,9 @@ function background(backgroundImages){
         document.getElementById("intro").style.backgroundImage = "url("+backgroundImages[count].img+")";
        // console.log(backgroundImages[count].img);
     },7000);
+
+    function toggleSideBar(ref){
+        ref.classList.toggle('active');
+        document.getElementById('sidebar_content').classList.toggle('active');
+    }
 }
