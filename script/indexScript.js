@@ -2,6 +2,7 @@ let modal = document.getElementById("login_box");
 let btn= document.getElementById("modal_login");
 let span = document.getElementsByClassName("close")[0];
 let dropdownbtn= document.getElementsByClassName("modifyEvtDrop");
+const toggleBtn = document.getElementById("togglebtn");
 
 /* Modal */
 $("#modal_login").on("click", function(){
@@ -13,14 +14,14 @@ $(".close").on("click", function(){
 });
 
 $("#togglebtn").on("click", function(){
-    toggleSideBar(this);
-    if ($("#sidebar").css("display") === "none"){
-     document.getElementById("sidebar").style.display= "block";
-    }
-    else{
-     document.getElementById("sidebar").style.display= "none";
-    }
- });
+   toggleSideBar(this);
+   if ($("#sidebar").css("display") === "none"){
+    document.getElementById("sidebar").style.display= "block";
+   }
+   else{
+    document.getElementById("sidebar").style.display= "none";
+   }
+});
 
 
 window.onclick = function(event){
@@ -66,9 +67,9 @@ function background(backgroundImages){
         document.getElementById("intro").style.backgroundImage = "url("+backgroundImages[count].img+")";
        // console.log(backgroundImages[count].img);
     },7000);
+}
 
-    function toggleSideBar(ref){
-        ref.classList.toggle('active');
-        document.getElementById('sidebar_content').classList.toggle('active');
-    }
+function toggleSideBar(ref){
+    ref.classList.toggle('active');
+    document.getElementById('sidebar_content').classList.toggle('active');
 }
