@@ -28,6 +28,21 @@ $("#togglebtn").on("click", function(){
      document.getElementById("sidebar").style.display= "none";
     }
  });
+  //navBAr scroll effect
+  $(window).scroll(
+    {
+        previousTop: 0
+    },
+function(){
+    let currentTop = $(window). scrollTop();
+    if (currentTop < this.previousTop && $(window).width()< 519){
+        $("#navbar2, #branding2").show();
+    } else{
+        $("#navbar2, #branding2").hide();
+       }
+    
+    this.previousTop=currentTop; 
+});
 
 //function
 function toggleSideBar(ref){
