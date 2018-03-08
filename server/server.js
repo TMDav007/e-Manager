@@ -6,7 +6,7 @@ const eventsRouter = require("./routes/eventRoute");
 const centersRouter = require("./routes/centerRoute");
 
 
-const port = 8000;
+const port = 3000;
 
 
 app.use(bodyParser.json());
