@@ -1,12 +1,12 @@
 const chai = require('chai');
 const expect = require('chai').expect;
 const chaiHttp = require ('chai-http');
-const app = require('./../server/app');
+const app = require('./../server/server');
 const should = chai.should();
 
 chai.use(chaiHttp);
 
-/Test for /Get route
+//Test for /Get route
 describe('/GET centers', () => {
     
     //test for Get all Events
