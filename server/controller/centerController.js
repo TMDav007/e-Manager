@@ -1,92 +1,28 @@
 const center = require('./../model/centerModel');
+const controlFunction = require('./controllerFunctions');
+
 
 class centerController{
     static getAllCenters(req,res){
-        if (center.length > 0)
-        {
-            return res.json({
-                centers: center,
-                error : false
-           });
-        }
-        return res.json({
-            message: "No center",
-            error : true
-       });
-   }
+       controlFunction.getAll(center,req,res);
+    }
 
    static addCenter(req,res){
         //check if the id is not existing
-        for (let i= 0; i<center.length; i++){
-            if (req.body.id === center[i].id){
-            return res.json({
-                    message: "center id already existing",
-                    error: true
-                });
-            }
-            else if (!req.body.id){
-                return res.json({
-                    message: "center id is required",
-                    error: true
-                });
-            }
-        } 
-        center.push(req.body);
-            return res.json({
-            message: "Success",
-            error: false
-        }); 
+       controlFunction.add(center,req,res);
    }
 
    static updateCenter(req,res){
-    for (let i= 0; i<center.length; i++){
-        if (center[i].id === parseInt(req.params.centerId, 10)){
-            center[i].name = req.body.name;
-            center[i].cost = req.body.cost;
-            return res.json({
-                message : 'Update Successful',
-                error : false
-            });
-        }
-    }
-        return res.status(404).json({
-            message: 'center not found',
-            error : true
-        });
+        controlFunction.update(center,req,res);
    }
 
    static removeCenter(req,res){
-        for (let i = 0; i<center.length ; i++){
-            if (center[i].id === parseInt(req.params.centerId)){
-                center.splice(i,1);
-                return res.json({
-                    message : "Success",
-                    error : false
-                });
-            }
-        }
-        return res.status(404).json({
-            message: 'center not found',
-            error : true
-        });
+        controlFunction.remove(center,req,res);
    }
 
    static getCenter(req,res){
-        for (let i = 0; i<center.length ; i++){
-            if (center[i].id === parseInt(req.params.centerId)){
-                return res.json({
-                    center : center[i],
-                    message : "Success",
-                    error : false
-                });
-            }
-        }
-        return res.status(404).json({
-            message: 'center not found',
-            error : true
-        });      
-    }
-
+        controlFunction.getOne(center,req,res);
+   }
 }  
   
 

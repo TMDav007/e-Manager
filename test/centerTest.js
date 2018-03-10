@@ -15,8 +15,8 @@ describe('/GET centers', () => {
         .get('/api/centers')
         .end((err, res) => {
             res.should.have.status(200);
-            res.body.should.have.property('centers');
-            res.body.centers.should.be.a('array').with.lengthOf(2);
+            res.body.should.have.property('result');
+            res.body.result.should.be.a('array').with.lengthOf(2);
             res.body.should.have.property('error');
             res.body.error.should.eql(false);
             done();
@@ -40,7 +40,7 @@ describe('/POST a center', () =>{
         .end((err, res) =>{
             res.body.should.be.a('object');
             res.body.should.have.property('message');
-            res.body.message.should.eql('center id already existing');
+            res.body.message.should.eql("the 'id' already existing");
             res.body.should.have.property('error');
             res.body.error.should.eql(true);
             done();
@@ -59,7 +59,7 @@ describe('/POST a center', () =>{
         .end((err, res) =>{
             res.body.should.be.a('object');
             res.body.should.have.property('message');
-            res.body.message.should.eql('center id is required');
+            res.body.message.should.eql("the 'id' is required");
             res.body.should.have.property('error');
             res.body.error.should.eql(true);
             done();
@@ -89,48 +89,15 @@ describe('/POST a center', () =>{
     
 })
 
-//GET a center
-describe('/Get a center', () =>{
-    //GET a center with an Id
-    it ('it should get a center',(done) =>{
-    const centerId = 2;
-      chai.request(app)
-        .get('/api/centers/' +centerId)
-        .end((err, res) =>{
-            res.body.should.be.a('object');
-            res.body.should.have.property('center');
-            res.body.center.should.be.a('object');
-            res.body.should.have.property('message');
-            res.body.message.should.eql('Success');
-            res.body.should.have.property('error');
-            res.body.error.should.eql(false);
-            done();
-        })
-    })
 
-    //GET a center got no id
-    it ('it should get a center',(done) =>{
-        const centerId = 4;
-        chai.request(app)
-        .get('/api/centers/' +centerId)
-        .end((err, res) =>{
-            res.body.should.be.a('object');
-            res.body.should.have.property('message');
-            res.body.message.should.eql('center not found');
-            res.body.should.have.property('error');
-            res.body.error.should.eql(true);
-            done();
-        })
-    })
-})
 
 //PUT(Update) a center
 describe('/Update a center', () =>{
     //PUT a center
     it ('it should update the center',(done) =>{
-    const centerId = 2;
+    const id = 2;
       chai.request(app)
-        .put('/api/centers/' +centerId)
+        .put('/api/centers/'+id)
         .end((err, res) =>{
             res.body.should.be.a('object');
             res.body.should.have.property('message');
@@ -143,13 +110,13 @@ describe('/Update a center', () =>{
 
     // PUT a center 
     it ('it should get an not update',(done) =>{
-        const centerId = 4;
+        const id = 4;
         chai.request(app)
-        .get('/api/centers/' +centerId)
+        .put('/api/centers/' +id)
         .end((err, res) =>{
             res.body.should.be.a('object');
             res.body.should.have.property('message');
-            res.body.message.should.eql('center not found');
+            res.body.message.should.eql('not found');
             res.body.should.have.property('error');
             res.body.error.should.eql(true);
             done();
@@ -161,9 +128,9 @@ describe('/Update a center', () =>{
 describe('/Delete an event', () =>{
     //DELETE a center
     it ('it should delete an center',(done) =>{
-    const centerId = 2;
+    const id = 2;
       chai.request(app)
-        .delete('/api/centers/' +centerId)
+        .delete('/api/centers/' +id)
         .end((err, res) =>{
             res.body.should.be.a('object');
             res.body.should.have.property('message');
@@ -176,16 +143,51 @@ describe('/Delete an event', () =>{
 
     // DELETE an event 
     it ('it should not delete the center',(done) =>{
-        const centerId = 4;
+        const id = 4;
         chai.request(app)
-        .delete('/api/centers/' +centerId)
+        .delete('/api/centers/' +id)
         .end((err, res) =>{
             res.body.should.be.a('object');
             res.body.should.have.property('message');
-            res.body.message.should.eql('center not found');
+            res.body.message.should.eql('not found');
             res.body.should.have.property('error');
             res.body.error.should.eql(true);
             done();
         })
     })
 }) 
+
+//GET a center
+describe('/Get a center', () =>{
+    //GET a center with an Id
+    it ('it should get a center',(done) =>{
+    const id =1;
+      chai.request(app)
+        .get('/api/centers/' +id)
+        .end((err, res) =>{
+            res.body.should.be.a('object');
+            res.body.should.have.property('result');
+            res.body.result.should.be.a('object');
+            res.body.should.have.property('message');
+            res.body.message.should.eql('Success');
+            res.body.should.have.property('error');
+            res.body.error.should.eql(false);
+            done();
+        })
+    })
+
+    //GET a center got no id
+    it ('it should not get a center',(done) =>{
+        const id = 4;
+        chai.request(app)
+        .get('/api/centers/'+id)
+        .end((err, res) =>{
+            res.body.should.be.a('object');
+            res.body.should.have.property('message');
+            res.body.message.should.eql('not found');
+            res.body.should.have.property('error');
+            res.body.error.should.eql(true);
+            done();
+        })
+    })
+})

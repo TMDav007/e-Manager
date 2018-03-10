@@ -14,12 +14,12 @@ describe('/GET events', () => {
            chai.request(app)
               .get('/api/events')
               .end((err, res) => {
-                  res.should.have.status(200);
-                  res.body.should.have.property('events');
-                  res.body.events.should.be.a('array').with.lengthOf(3);
-                  res.body.should.have.property('error');
-                  res.body.error.should.eql(false);
-                 done();
+                res.should.have.status(200);
+                res.body.should.have.property('result');
+                res.body.result.should.be.a('array').with.lengthOf(3);
+                res.body.should.have.property('error');
+                res.body.error.should.eql(false);
+                done();
               });
       })
   });
@@ -100,36 +100,36 @@ describe('/GET events', () => {
   describe('/Get an event', () =>{
       //Test for post with an existing Id
       it ('it should get an event',(done) =>{
-      const eventId = 2;
+      const id = 2;
         chai.request(app)
-          .get('/api/events/' +eventId)
+          .get('/api/events/' +id)
           .end((err, res) =>{
-              res.body.should.be.a('object');
-              res.body.should.have.property('event');
-              res.body.event.should.be.a('object');
-              res.body.should.have.property('message');
-              res.body.message.should.eql('Success');
-              res.body.should.have.property('error');
-              res.body.error.should.eql(false);
-              done();
+            res.body.should.be.a('object');
+            res.body.should.have.property('result');
+            res.body.result.should.be.a('object');
+            res.body.should.have.property('message');
+            res.body.message.should.eql('Success');
+            res.body.should.have.property('error');
+            res.body.error.should.eql(false);
+            done();
           })
       })
   
       //GET an event 
-      it ('it should get an event',(done) =>{
-          const eventId = 4;
+      it ('it should not get an event',(done) =>{
+          const id = 4;
           chai.request(app)
-          .get('/api/events/' +eventId)
+          .get('/api/events/'+id)
           .end((err, res) =>{
-              res.body.should.be.a('object');
-              res.body.should.have.property('message');
-              res.body.message.should.eql('event not found');
-              res.body.should.have.property('error');
-              res.body.error.should.eql(true);
-              done();
+            res.body.should.be.a('object');
+            res.body.should.have.property('message');
+            res.body.message.should.eql('not found');
+            res.body.should.have.property('error');
+            res.body.error.should.eql(true);
+            done();
           })
       })
-  })
+})
   
   //Test for update an event
   describe('/Update an event', () =>{
@@ -156,7 +156,7 @@ describe('/GET events', () => {
           .end((err, res) =>{
               res.body.should.be.a('object');
               res.body.should.have.property('message');
-              res.body.message.should.eql('event not found');
+              res.body.message.should.eql('not found');
               res.body.should.have.property('error');
               res.body.error.should.eql(true);
               done();
@@ -168,9 +168,9 @@ describe('/GET events', () => {
   describe('/Delete an event', () =>{
       //DELETE an event
       it ('it should delete an event',(done) =>{
-      const eventId = 2;
+      const id = 2;
         chai.request(app)
-          .delete('/api/events/' +eventId)
+          .delete('/api/events/' +id)
           .end((err, res) =>{
               res.body.should.be.a('object');
               res.body.should.have.property('message');
@@ -183,13 +183,13 @@ describe('/GET events', () => {
   
       // DELETE an event 
       it ('it should get an not delete the event',(done) =>{
-          const eventId = 4;
+          const id = 4;
           chai.request(app)
-          .delete('/api/events/' +eventId)
+          .delete('/api/events/' +id)
           .end((err, res) =>{
               res.body.should.be.a('object');
               res.body.should.have.property('message');
-              res.body.message.should.eql('event not found');
+              res.body.message.should.eql('not found');
               res.body.should.have.property('error');
               res.body.error.should.eql(true);
               done();
