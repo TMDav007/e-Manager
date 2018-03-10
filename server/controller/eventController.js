@@ -1,20 +1,11 @@
 const event = require('./../model/eventModel');
+const controlFunction = require('./controllerFunctions')
 
 //class eventController class
 class eventController{
     //GET: method that gets all events
     static getAllEvents(req, res){
-        if (event.length > 0)
-        {
-            return res.json({
-                events: event,
-                error : false
-           });
-        }
-        return res.json({
-            message: "No event",
-            error : true
-       });
+        controlFunction.getAll(event,req,res);
     }
 
     static addEvent(req,res){
@@ -55,41 +46,17 @@ class eventController{
             }
         }
         return res.status(404).json({
-            message: 'User not found',
+            message: 'not found',
             error : true
         });
     }
 
     static remove(req, res){
-        for (let i = 0; i<event.length ; i++){
-            if (event[i].id === parseInt(req.params.eventId)){
-                event.splice(i,1);
-                return res.json({
-                    message : "Success",
-                    error : false
-                });
-            }
-        }
-        return res.status(404).json({
-            message: 'event not found',
-            error : true
-        });
+        controlFunction.remove(event,req,res);
     }
 
     static getEvent(req,res){
-        for (let i = 0; i<event.length ; i++){
-            if (event[i].id === parseInt(req.params.eventId)){
-                return res.json({
-                    event : event[i],
-                    message : "Success",
-                    error : false
-                });
-            }
-        }
-        return res.status(404).json({
-            message: 'event not found',
-            error : true
-        });     
+        controlFunction.getOne(event,req,res);
     }
 }
   
