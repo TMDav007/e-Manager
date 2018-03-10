@@ -10,7 +10,7 @@ eventRouter.get('/',eventsController.getAllEvents)
 
 //router for update,get an event and delete an event
 eventRouter.put('/:eventId',eventsController.update)
-            .get('/:eventId',eventsController.getEvent)
-            .delete('/:eventId',eventsController.remove);
+            .get('/:id',eventsController.getEvent)
+            .delete('/:id',eventsController.remove);
 
 module.exports = eventRouter;

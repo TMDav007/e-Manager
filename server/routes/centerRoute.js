@@ -7,8 +7,8 @@ const centerRouter = express.Router();
 centerRouter.get('/',centersController.getAllCenters)
             .post('/',centersController.addCenter)
 
-centerRouter.put('/:centerId',centersController.updateCenter)
-            .delete('/:centerId',centersController.removeCenter)
-            .get('/:centerId',centersController.getCenter);
+centerRouter.put('/:id',centersController.updateCenter)
+            .delete('/:id',centersController.removeCenter)
+            .get('/:id',centersController.getCenter);
 
 module.exports = centerRouter;
