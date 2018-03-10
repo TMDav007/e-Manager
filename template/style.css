@@ -108,8 +108,7 @@ header #branding h1,header #branding2 h1{
 
 header nav .navigator{
     position:relative;
-    left: 5%;
-    width: 40%;
+    width: 30%;
    margin: 20px auto;
 }
 
@@ -137,7 +136,7 @@ header .register ul{
 
 header .register ul li{
    float: right;
-   width: 8%;
+   width: 10%;
    text-align: center;
     
 }
@@ -147,6 +146,7 @@ header .register ul li ul li{
 
 header .register ul li:hover ul li{
     display:block;
+    width: 8em;
     
 }
 
@@ -687,6 +687,7 @@ header .register ul li:hover ul li{
     margin: 0 auto 30px auto;
     position: relative;
     top:9em;
+    margin-bottom: 3.8em;
     width :65%;
     height: 355px;  
     border: #000 0px solid;
@@ -788,7 +789,7 @@ footer p{
     text-align:center;
 }
 
-/*Media Query */
+//*Media Query */
 @media (max-width: 968px){
     header .navigator li{
         float: left;
@@ -831,7 +832,58 @@ footer p{
         position: relative;
         right:18%;
     }
+   
+    /*Add Event Modal */
+#addEvt_content{
+    bottom:2em;
+    width: 70%;
+    height:85%;
+}
+#addEvt_content input[type="text"], #addEvt_content input[type="date"]{
+    width: 40%;
+    height: 30px;
+    padding: 4px;
+    font-size: 13px;
+}
+
+#addEvt_content select{
+    width: 45%;
+    font-size: 13px;
+}
     
+/*Delete modal */
+#delEvent_content,#delCenter_content{
+    left:-1px;
+    width: 40em;
+}
+#delEvent_content p, #delCenter_content p{
+    font-size:16px;
+    position:relative;
+    left:0.5em;
+    text-align: center;
+    color:#2b0704;
+}
+
+#delEvent_content p i, #delCenter_content p i{
+    font-size:70px;
+}
+
+#delEvent_content .btn,#delCenter_content .btn{
+    position:relative;
+    left:11em;
+
+}
+#delEvent_content button,#delCenter_content button{
+    margin:0 18px;
+    font-size: 14px;
+}
+
+/*viewTable Section */
+#viewTable{
+    margin: 0 auto 30px auto;
+    width :80%;
+    font-size:13px;
+}
 }
 
 @media (max-width:865px){
@@ -946,6 +998,50 @@ footer p{
     position: relative;
     right:25%;
 }
+/*Add Event Modal */
+#addEvt_content{
+    bottom:1em;
+    width: 80%;
+    height:80%;
+}
+#addEvt_content input[type="text"], #addEvt_content input[type="date"]{
+    width: 40%;
+    height: 20px;
+    padding: 4px;
+    font-size: 13px;
+}
+
+#addEvt_content select{
+    width: 45%;
+    font-size: 13px;
+}
+/*Delete modal */
+#delEvent_content,#delCenter_content{
+    left:-3px;
+    width: 30em;
+}
+#delEvent_content p, #delCenter_content p{
+    font-size:14px;
+    position:relative;
+    left:0.5em;
+    text-align: center;
+    color:#2b0704;
+}
+
+#delEvent_content p i, #delCenter_content p i{
+    font-size:50px;
+}
+
+#delEvent_content .btn,#delCenter_content .btn{
+    position:relative;
+    left:7em;
+
+}
+#delEvent_content button,#delCenter_content button{
+    margin:0 18px;
+    font-size: 14px;
+}
+
 
 /*inputs */
 input[type="text"],
@@ -959,6 +1055,30 @@ button{
     font-size: 14px;
     padding: 3px 6px;
 }
+
+/*viewTable Section */
+#viewTable{
+    margin: 0 auto 30px auto;
+    width :90%;
+    font-size:13px;
+}
+#viewTable h1{
+    font-size: 25px;
+}
+
+#viewTable table thead{
+	font-size:12px;
+}
+#viewTable table tbody {
+    font-size: 12px;
+}
+
+#viewTable thead #add_evt a, #viewTable thead #add_center a{
+    border-radius:5px;
+    font-size:12px;
+    
+}
+
 }
 @media (max-width:590px){
     header nav .navigator{
@@ -1056,6 +1176,76 @@ button{
     right:20%;
 }
 
+/*Add Event Modal */
+#addEvt_content{
+    bottom:1em;
+    width: 90%;
+    height:80%;
+}
+#addEvt_content input[type="text"], #addEvt_content input[type="date"]{
+    width: 40%;
+    height: 20px;
+    padding: 2px;
+    font-size: 13px;
+}
+
+#addEvt_content select{
+    width: 45%;
+    font-size: 13px;
+}
+
+/* add center  */
+#addCenter_content,#editCenter_content{
+    width: 90%;
+    height:70%;
+    bottom: -2em;
+}
+#addCenter_content input[type="text"], 
+#addCenter_content input[type="tel"],
+#editCenter_content input[type="text"],
+#editCenter_content input[type="tel"]{
+    width: 40%;
+    font-size: 11px;
+}
+#addCenter_content input[type="file"],#editCenter_content input[type="file"]{
+    width: 50%;
+    font-size: 11px;
+}
+
+#addCenter_content select,#editCenter_content select{
+    width: 35%;
+    font-size: 11px;
+}
+
+/*Delete modal */
+#delEvent_content,#delCenter_content{
+    left:-3px;
+    width: 30em;
+}
+#delEvent_content p, #delCenter_content p{
+    font-size:14px;
+    position:relative;
+    left:0.5em;
+    text-align: center;
+    color:#2b0704;
+}
+
+#delEvent_content p i, #delCenter_content p i{
+    font-size:50px;
+}
+
+#delEvent_content .btn,#delCenter_content .btn{
+    position:relative;
+    left:7em;
+
+}
+#delEvent_content button,#delCenter_content button{
+    margin:0 18px;
+    font-size: 14px;
+}
+
+
+
 /*inputs */
 input[type="text"],
 input[type="password"],
@@ -1066,6 +1256,29 @@ input[type="tel"]{
 
 button{
     font-size: 14px;
+}
+
+/*viewTable Section */
+#viewTable{
+    margin: 0 auto 30px auto;
+    width :90%;
+    font-size:13px;
+}
+#viewTable h1{
+    font-size: 25px;
+}
+
+#viewTable table thead{
+	font-size:11px;
+}
+#viewTable table tbody {
+    font-size: 11px;
+}
+
+#viewTable thead #add_evt a, #viewTable thead #add_center a{
+    border-radius:5px;
+    font-size:12px;
+    
 }
 
 }
@@ -1304,6 +1517,81 @@ button{
     right:10%;
 }
 
+/*Add Event Modal */
+#addEvt_content{
+    bottom:-2em;
+    width: 90%;
+    height:80%;
+}
+#addEvt_content input[type="text"], #addEvt_content input[type="date"]{
+    width: 10em;
+    height: 20px;
+    padding: 2px;
+    font-size: 11px;
+}
+
+#addEvt_content select{
+    width: 7em;
+    font-size: 11px;
+}
+#addEvt form{
+    position: relative;
+    top: 0em;
+    padding-bottom: 5em;
+}
+
+/* add center and edit center  */
+#addCenter_content,#editCenter_content{
+    width: 95%;
+    height:70%;
+    bottom: -2em;
+    left:1px;
+}
+#addCenter_content input[type="text"], 
+#addCenter_content input[type="tel"],
+#editCenter_content input[type="text"],
+#editCenter_content input[type="tel"]{
+    width: 40%;
+    font-size: 11px;
+}
+#addCenter_content input[type="file"],#editCenter_content input[type="file"]{
+    width: 50%;
+    font-size: 11px;
+}
+
+#addCenter_content select,#editCenter_content select{
+    width: 35%;
+    font-size: 11px;
+}
+
+/*Delete modal */
+#delEvent_content,#delCenter_content{
+    left:-3px;
+    width: 20em;
+}
+#delEvent_content p, #delCenter_content p{
+    font-size:12px;
+    position:relative;
+    bottom:0.8em;
+    left:0.5em;
+    text-align: center;
+    color:#2b0704;
+}
+
+#delEvent_content p i, #delCenter_content p i{
+    font-size:35px;
+}
+
+#delEvent_content .btn,#delCenter_content .btn{
+    position:relative;
+    left:4em;
+
+}
+#delEvent_content button,#delCenter_content button{
+    margin:0 13px;
+    font-size: 12px;
+}
+
 
 /*inputs */
 input[type="text"],
@@ -1318,4 +1606,29 @@ button{
     padding:2px 5px;
 }
 
+/*viewTable Section */
+#viewTable{
+    margin: 0 0 30px 0;
+    width :100%;
+    font-size:13px;
+}
+#viewTable h1{
+    font-size: 22px;
+}
+
+#viewTable tr,#viewTable td{
+    padding: 7px 3px;
+}
+#viewTable table thead{
+	font-size:10px;
+}
+#viewTable table tbody {
+    font-size: 10px;
+}
+
+#viewTable thead #add_evt a, #viewTable thead #add_center a{
+    border-radius:5px;
+    font-size:10px;
+    
+}
 }
