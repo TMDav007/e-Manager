@@ -9,15 +9,15 @@ const port = 3000;
 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
-app.use(bodyParser.json({type: 'application/json'}));
+app.use(bodyParser.json({ type: 'application/json' }));
 
-app.use('/api/events', eventsRouter); 
-app.use('/api/centers', centersRouter); 
+app.use('/api/events', eventsRouter);
+app.use('/api/centers', centersRouter);
 
-app.listen(port, ()=>{
-    console.log("we are running live");
-})
+app.listen(port, () => {
+  console.log('we are running live');
+});
 
-export default app ;
+export default app;
