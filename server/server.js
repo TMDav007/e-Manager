@@ -1,10 +1,9 @@
+import express from 'express';
+import bodyParser from 'body-parser';
+import eventsRouter from './routes/eventRoute';
+import centersRouter from './routes/centerRoute'
 
-const express = require ('express');
-const app        = express();
-const bodyParser = require('body-parser');
-const eventsRouter = require("./routes/eventRoute");
-const centersRouter = require("./routes/centerRoute");
-
+const app = express();
 
 const port = 3000;
 
@@ -21,4 +20,4 @@ app.listen(port, ()=>{
     console.log("we are running live");
 })
 
-module.exports = app;
+export default app ;
