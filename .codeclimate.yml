@@ -1,4 +1,4 @@
 exclude_patterns:
 - "template"
 - "coverage"
-- "test"
+- "server/test"
