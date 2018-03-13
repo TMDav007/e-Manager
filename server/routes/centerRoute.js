@@ -1,14 +1,15 @@
-const express = require('express')
-const centersController = require('./../controller/centerController')
+import express from 'express';
+import centersController from './../controller/centerController';
+
 const centerRouter = express.Router();
 
 
-//router for the get,post,delte and put
-centerRouter.get('/',centersController.getAllCenters)
-            .post('/',centersController.addCenter)
+// router for the get,post,delte and put
+centerRouter.get('/', centersController.getAllCenters)
+  .post('/', centersController.addCenter);
 
-centerRouter.put('/:id',centersController.updateCenter)
-            .delete('/:id',centersController.removeCenter)
-            .get('/:id',centersController.getCenter);
+centerRouter.put('/:id', centersController.updateCenter)
+  .delete('/:id', centersController.removeCenter)
+  .get('/:id', centersController.getCenter);
 
-module.exports = centerRouter;
+export default centerRouter;
