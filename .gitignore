@@ -2,7 +2,7 @@
 node_modules
 
 # the transpiled build folder
-dist
+
 
 # nyc output
 .nyc output
