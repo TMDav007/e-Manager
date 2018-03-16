@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "start": "node ./dist/server.js",
     "dev": "nodemon server/server.js  --exec babel-node",
     "build": "babel server -s -d dist",
     "test": "nyc --reporter=html --reporter=text && mocha --require babel-core/register server/test/ --exit",
