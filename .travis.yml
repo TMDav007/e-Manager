@@ -10,15 +10,7 @@ before_script:
   - psql -c "CREATE DATABASE e-Manager;", -U postgres
   - psql -c "CREATE USER postgres WITH PASSWORD 'opeyemi007';" -U postgres
 
-addons: 
-  postgresql: "10"
-  apt:
-    packages: 
-    - postgresql-10 
-env:
-  global:
-  - localhost=5433
-  
+
 
 COVERALLS_REPO_TOKEN: YtcddTyvMkCkdLZXWbcH3TjqmxeQp26Mg
 
