@@ -4,15 +4,15 @@ module.exports = {
   development: {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: '',
+    database: 'e-Manager',
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'postgres'
   },
   test: {
-    username: 'travis_test',
+    username: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: 'testing_db',
+    database: 'e-Manager',
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'postgres',
