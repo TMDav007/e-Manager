@@ -1,10 +1,17 @@
 # dependencies
 node_modules
 
-
+# coverage
+coverage
 
 # nyc output
 .nyc output
 
 # log
 npm-debug.log
+
+# dotenv environment vairable files
+.env
+
+# dist folder
+dist/
