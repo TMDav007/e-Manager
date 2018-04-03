@@ -16,7 +16,8 @@ module.exports = {
         primaryKey: true,
       },
       phoneNo: {
-        
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       password: {
         type: Sequelize.STRING,

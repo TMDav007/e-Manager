@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from './../server';
-import Model from './../models';
+import Model from './../models/';
 
 const { User } = Model;
 
