@@ -12,10 +12,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    events: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     image: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -24,11 +20,11 @@ export default (sequelize, DataTypes) => {
   Center.associate = (models) => {
     // associations can be defined here
     Center.hasMany(models.Event, {
-      foreignKey: 'centerId',
+      foreignKey: 'center',
       onDelete: 'CASCADE',
     });
     Center.belongsTo(models.User, {
-      foreignKey: 'eventId',
+      foreignKey: 'centerName',
       onDelete: 'CASCADE',
     });
   };
