@@ -2,196 +2,276 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from './../server';
 
+
+process.env.NODE_ENV = 'test';
+
 /* eslint-disable no-unused-vars */
 const should = chai.should();
 
 chai.use(chaiHttp);
 
-// Test for /Get route
-describe('/GET events', () => {
-  // test for Get all Events
-  it('it should GET all the events', (done) => {
-    chai.request(app)
-      .get('/api/events')
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.have.property('result');
-        res.body.result.should.be.a('array').with.lengthOf(3);
-        res.body.should.have.property('error');
-        res.body.error.should.eql(false);
-        done();
-      });
-  });
-});
+const date = `12/09/2019${Math.random()}`;
+const id = Math.floor(Math.random() * 50) + 1;
 
-// Test the Post routes
+// Test for /Post event
 describe('/POST an event', () => {
-  // Test for post with an existing Id
-  it('it should not POST an event with an existing id field', (done) => {
-    const event = {
-      id: '2',
-      eventType: 'Wedding',
-      eventLocation: 'Oriental',
-      state: 'Lagos',
-      date: '12/12/2018'
+  it('it should create an event after authenicating user', (done) => {
+    // variable details
+    const loginDetails = {
+      email: 'me2you@yahoo.com',
+      password: 'opeyemi'
     };
 
+    const event = {
+      location: 'lagos',
+      center: 'Oriental',
+      eventType: 'Concert',
+      date,
+      duration: 4,
+      amount: '500,000',
+    };
+    // login users details
     chai.request(app)
-      .post('/api/events')
-      .send(event)
+      .post('/users/login')
+      .send(loginDetails)
       .end((err, res) => {
         res.body.should.be.a('object');
-        res.body.should.have.property('message');
-        res.body.message.should.eql('event id already existing');
-        res.body.should.have.property('error');
-        res.body.error.should.eql(true);
-        done();
+        res.body.should.have.property('authentication');
+        res.body.authentication.should.eql(true);
+        res.body.should.have.property('token');
+        /* eslint-disable prefer-destructuring */
+        const token = res.body.token;
+        chai.request(app)
+          .post('/events/')
+          .set('x-access-token', token)
+          .send(event)
+          .end((err, res) => {
+            res.body.should.be.a('object');
+            res.body.should.be.property('message');
+            res.body.message.should.eql('success');
+            res.body.should.have.property('event');
+            done();
+          });
       });
   });
 
-  // Test for post with no Id
-  it('it should not POST an event without an id field', (done) => {
-    const event = {
-      eventType: 'Wedding',
-      eventLocation: 'Oriental',
-      state: 'Lagos',
-      date: '12/12/2018'
+  it('it should not create a event with an existing event date', (done) => {
+    // variable details
+    const loginDetails = {
+      email: 'me2you@yahoo.com',
+      password: 'opeyemi'
     };
 
+    const event = {
+      location: 'lagos',
+      center: 'Oriental',
+      eventType: 'Concert',
+      date: '12/03/2018',
+      duration: 4,
+      amount: '500,000',
+    };
+
+    // login users details
     chai.request(app)
-      .post('/api/events')
-      .send(event)
+      .post('/users/login')
+      .send(loginDetails)
       .end((err, res) => {
         res.body.should.be.a('object');
-        res.body.should.have.property('message');
-        res.body.message.should.eql('event id is required');
-        res.body.should.have.property('error');
-        res.body.error.should.eql(true);
-        done();
+        res.body.should.have.property('authentication');
+        res.body.authentication.should.eql(true);
+        res.body.should.have.property('token');
+        /* eslint-disable prefer-destructuring */
+        const token = res.body.token;
+        chai.request(app)
+          .post('/events/')
+          .set('x-access-token', token)
+          .send(event)
+          .end((err, res) => {
+            res.should.have.status(409);
+            res.body.should.be.a('object');
+            res.body.should.have.property('error');
+            res.body.error.should.eql('date already existing');
+            done();
+          });
       });
   });
 
-  // Test for post with to add a new event.
-  it('it should Add(post) a new event', (done) => {
-    const event = {
-      id: '4',
-      eventType: 'Wedding',
-      eventLocation: 'Oriental',
-      state: 'Lagos',
-      date: '12/12/2018'
+  it('it should not create a event with an invalid event type', (done) => {
+    // variable details
+    const loginDetails = {
+      email: 'me2you@yahoo.com',
+      password: 'opeyemi'
     };
 
+    const event = {
+      location: 'lagos',
+      center: 'Oriental',
+      eventType: 'others',
+      date: '12/03/2018',
+      duration: 4,
+      amount: '500,000',
+    };
+
+    // login users details
     chai.request(app)
-      .post('/api/events')
-      .send(event)
+      .post('/users/login')
+      .send(loginDetails)
       .end((err, res) => {
         res.body.should.be.a('object');
-        res.body.should.have.property('message');
-        res.body.message.should.eql('Success');
-        res.body.should.have.property('error');
-        res.body.error.should.eql(false);
-        done();
+        res.body.should.have.property('authentication');
+        res.body.authentication.should.eql(true);
+        res.body.should.have.property('token');
+        /* eslint-disable prefer-destructuring */
+        const token = res.body.token;
+        chai.request(app)
+          .post('/events/')
+          .set('x-access-token', token)
+          .send(event)
+          .end((err, res) => {
+            res.should.have.status(409);
+            res.body.should.be.a('object');
+            res.body.should.have.property('error');
+            res.body.error.should.eql('event type is required!!!');
+            done();
+          });
       });
   });
 });
 
-// TEst for Get an EVent
-describe('/Get an event', () => {
-  // Test for post with an existing Id
-  it('it should get an event', (done) => {
-    const id = 2;
+// Test for Update
+describe('/put a event', () => {
+  it('it should update a event', (done) => {
+    // variable details
+    const loginDetails = {
+      email: 'me2you@yahoo.com',
+      password: 'opeyemi'
+    };
+    // login users details
     chai.request(app)
-      .get(`/api/events/${id}`)
+      .post('/users/login')
+      .send(loginDetails)
       .end((err, res) => {
         res.body.should.be.a('object');
-        res.body.should.have.property('result');
-        res.body.result.should.be.a('object');
-        res.body.should.have.property('message');
-        res.body.message.should.eql('Success');
-        res.body.should.have.property('error');
-        res.body.error.should.eql(false);
-        done();
+        res.body.should.have.property('authentication');
+        res.body.authentication.should.eql(true);
+        res.body.should.have.property('token');
+
+        /* eslint-disable prefer-destructuring */
+        const token = res.body.token;
+        chai.request(app)
+          .put(`/events/${id + 1}`)
+          .set('x-access-token', token)
+          .send({ location: 'oyo' })
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a('object');
+            res.body.should.have.property('message');
+            res.body.message.should.eql('success');
+            res.body.should.have.property('updatedEvent');
+            done();
+          });
       });
   });
 
-  // GET an event
-  it('it should not get an event', (done) => {
-    const id = 4;
+  it('it should not update a event', (done) => {
+    // variable details
+    const loginDetails = {
+      email: 'me2you@yahoo.com',
+      password: 'opeyemi'
+    };
+
+    const idd = 0;
+
+    // login users details
     chai.request(app)
-      .get(`/api/events/${id}`)
+      .post('/users/login')
+      .send(loginDetails)
       .end((err, res) => {
         res.body.should.be.a('object');
-        res.body.should.have.property('message');
-        res.body.message.should.eql('not found');
-        res.body.should.have.property('error');
-        res.body.error.should.eql(true);
-        done();
+        res.body.should.have.property('authentication');
+        res.body.authentication.should.eql(true);
+        res.body.should.have.property('token');
+
+        /* eslint-disable prefer-destructuring */
+        const token = res.body.token;
+        chai.request(app)
+          .put(`/events/${idd}`)
+          .set('x-access-token', token)
+          .end((err, res) => {
+            res.should.have.status(404);
+            res.body.should.be.a('object');
+            res.body.should.have.property('error');
+            res.body.error.should.eql('event not found');
+            done();
+          });
       });
   });
 });
 
-// Test for update an event
-describe('/Update an event', () => {
-  // PUT an event
-  it('it should update the event', (done) => {
-    const eventId = 2;
-    chai.request(app)
-      .put(`/api/events/${eventId}`)
-      .end((err, res) => {
-        res.body.should.be.a('object');
-        res.body.should.have.property('message');
-        res.body.message.should.eql('Update Successful');
-        res.body.should.have.property('error');
-        res.body.error.should.eql(false);
-        done();
-      });
-  });
-
-  // PUT an event
-  it('it should get an not update the event', (done) => {
-    const eventId = 4;
-    chai.request(app)
-      .get(`/api/events/${eventId}`)
-      .end((err, res) => {
-        res.body.should.be.a('object');
-        res.body.should.have.property('message');
-        res.body.message.should.eql('not found');
-        res.body.should.have.property('error');
-        res.body.error.should.eql(true);
-        done();
-      });
-  });
-});
-
-// delete an event
+// Delete an event
 describe('/Delete an event', () => {
-  // DELETE an event
+  // DELETE a center
   it('it should delete an event', (done) => {
-    const id = 2;
+    // variable details
+    const loginDetails = {
+      email: 'me2you@yahoo.com',
+      password: 'opeyemi'
+    };
+
+    // login users details
     chai.request(app)
-      .delete(`/api/events/${id}`)
+      .post('/users/login')
+      .send(loginDetails)
       .end((err, res) => {
         res.body.should.be.a('object');
-        res.body.should.have.property('message');
-        res.body.message.should.eql('Success');
-        res.body.should.have.property('error');
-        res.body.error.should.eql(false);
-        done();
+        res.body.should.have.property('authentication');
+        res.body.authentication.should.eql(true);
+        res.body.should.have.property('token');
+
+        /* eslint-disable prefer-destructuring */
+        const token = res.body.token;
+        chai.request(app)
+          .delete(`/events/${id + 1}`)
+          .set('x-access-token', token)
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a('object');
+            res.body.should.have.property('message');
+            res.body.message.should.eql('event deleted');
+            done();
+          });
       });
   });
 
-  // DELETE an event
-  it('it should get an not delete the event', (done) => {
-    const id = 4;
+  it('it should not delete a event', (done) => {
+    // variable details
+    const loginDetails = {
+      email: 'me2you@yahoo.com',
+      password: 'opeyemi'
+    };
+
+    // login users details
     chai.request(app)
-      .delete(`/api/events/${id}`)
+      .post('/users/login')
+      .send(loginDetails)
       .end((err, res) => {
         res.body.should.be.a('object');
-        res.body.should.have.property('message');
-        res.body.message.should.eql('not found');
-        res.body.should.have.property('error');
-        res.body.error.should.eql(true);
-        done();
+        res.body.should.have.property('authentication');
+        res.body.authentication.should.eql(true);
+        res.body.should.have.property('token');
+
+        /* eslint-disable prefer-destructuring */
+        const token = res.body.token;
+        chai.request(app)
+          .delete(`/events/${id + 1}`)
+          .set('x-access-token', token)
+          .end((err, res) => {
+            res.should.have.status(404);
+            res.body.should.be.a('object');
+            res.body.should.have.property('error');
+            res.body.error.should.eql('event not found');
+            done();
+          });
       });
   });
 });
