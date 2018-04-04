@@ -14,14 +14,11 @@ cache:
 
 services :
   - postgresql
-addons: 
-  postgresql: "10"
-  apt:
-    packages: 
-    - postgresql-10 
+
 before_script:
-  - psql -c 'create database e-Manager;' -U postgres
-  - cp database.yml.travis config/database.yml
+  - createuser tolu -s -U postgres
+  - createdb. database_test --username=tolu
+  - sequelize db:migrate
 
   
 
