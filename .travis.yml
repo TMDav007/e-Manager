@@ -7,8 +7,8 @@ services :
   - "postgresql"
 
 before_script:
-  - psql -c 'createdb e_Manager;'
-  - cp config/database.yml.travis config/database.yml
+  - psql --host=127.0.0.1 --port=5432 --username=postgres --password=opeyemi007 --dbname=e_Manager
+ 
 addons: 
   postgresql: "10"
   apt:
