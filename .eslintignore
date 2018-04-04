@@ -1,4 +1,6 @@
 /node_modules
 /dist
 /template/
-/server/models/index.js
+/server/models/
+/server/config/
+/server/migrations
