@@ -7,7 +7,7 @@ services :
   - "postgresql"
 
 before_script:
-  - psql -c 'create database e-Manager;' -U postgres
+  - psql -c 'createdb e-Manager;'
   - cp config/database.yml.travis config/database.yml
 addons: 
   postgresql: "10"
