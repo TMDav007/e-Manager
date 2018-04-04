@@ -1,0 +1,7 @@
+test:
+  username: postgres
+  password: opeyemi007
+  database: e-Manager
+  host: 127.0.0.1
+  port: 5432
+  dialect: postgres
