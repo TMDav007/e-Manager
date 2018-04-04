@@ -1,13 +1,19 @@
 language : node_js
+node_js: 'stable'
+install:
+  - npm install
 
-dist: trusty
+script:
+  - npm test
+env:
+  - NODE_ENV=test
 
-node_js : 
-   - "node"
+cache:
+  directories:
+    - "node_modules"
 
 services :
-  - "postgresql"
-
+  - postgresql
 addons: 
   postgresql: "10"
   apt:
