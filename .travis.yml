@@ -17,7 +17,7 @@ services :
 
 before_script:
   - createuser tolu -s -U postgres
-  - createdb. database_test --username=tolu
+  - createdb database_test --username=tolu
   - sequelize db:migrate
 
   
