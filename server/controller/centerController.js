@@ -1,40 +1,105 @@
 
-import center from './../model/centerModel';
-import controlFunction from './controllerFunctions';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import Model from './../models';
+import messageStatus from './../middleware/middlewareFunction';
+
+const { Center } = Model;
 
 /**
  *  it is a class that control all center methods
  */
 class centerController {
 /**
+ * it create a new center
+ * @param {string} req
+ * @param {string} res
+ * @returns {object} a new center
+ */
+  static addCenter(req, res) {
+    Center.findOne({ where: { centerName: req.body.centerName } })
+      .then((center) => {
+        if (center) {
+          return messageStatus(409, 'center name already existing', res);
+        }
+        Center.create({
+          centerName: req.body.centerName,
+          price: req.body.price,
+          location: req.body.location,
+          image: req.body.image,
+        })
+          .then((centerCreated) => {
+            if (!centerCreated) {
+              return messageStatus(500, 'server error. center not created', res);
+            }
+            return res.status(200).send({ message: 'center created', center });
+          }).catch(() => res.status(400).send());
+      });
+  }
+
+  /**
+ * it get a center
+ * @param {string} req
+ * @param {string} res
+ * @returns {object} a center
+ */
+  static getCenter(req, res) {
+    jwt.verify(req.headers['x-access-token'], 'secretKey');
+    return Center.findById(req.params.id)
+      .then((center) => {
+        if (!center) {
+          return messageStatus(404, 'center not found', res);
+        }
+        return res.status(200).json({ message: 'success', center });
+      });
+  }
+
+
+  /**
  * it GET all centers
  * @param {string} req
  * @param {string} res
- * @returns {object} all centers
+ * @returns {object} a center
  */
-  static getAllCenters(req, res) {
-    return controlFunction.getAll(center, req, res);
+  static getAllCenter(req, res) {
+    jwt.verify(req.headers['x-access-token'], 'secretKey');
+    return Center.findAll()
+      .then((centers) => {
+        if (!centers) {
+          return messageStatus(500, 'unable to get all center, try again', res);
+        }
+        return res.status(200).send({ message: 'success', centers });
+      });
   }
 
   /**
- * it ADD a center
- * @param {string} req
- * @param {string} res
- * @returns {object} add a center
- */
-  static addCenter(req, res) {
-    // check if the id is not existing
-    controlFunction.add(center, req, res);
-  }
-
-  /**
- * it PUT a center
- * @param {string} req
- * @param {string} res
- * @returns {object} update(put) centers
- */
+   * it Update a center
+   * @param {string} req
+   * @param {string} res
+   * @returns {object} PUT(update) center
+   */
   static updateCenter(req, res) {
-    controlFunction.update(center, req, res);
+    Center.findOne({ where: { centerName: req.params.centerName } })
+      .then((center) => {
+        if (!center) {
+          return messageStatus(404, 'center not found', res);
+        }
+        Center.update({
+          centerName: req.body.centerName || center.centerName,
+          price: req.body.price || center.price,
+          location: req.body.location || center.location,
+          image: req.body.image || center.image,
+        }, {
+          where: {
+            centerName: req.params.centerName,
+          },
+        }).then((updatedCenter) => {
+          if (!updatedCenter) {
+            return messageStatus(500, 'center could not be updated, try again', res);
+          }
+          return res.status(200).json({ message: 'success' });
+        });
+      });
   }
 
   /**
@@ -44,17 +109,23 @@ class centerController {
  * @returns {object} delete a center
  */
   static removeCenter(req, res) {
-    controlFunction.remove(center, req, res);
-  }
-
-  /**
- * it GET a center
- * @param {string} req
- * @param {string} res
- * @returns {object} a center
- */
-  static getCenter(req, res) {
-    controlFunction.getOne(center, req, res);
+    Center.findOne({ where: { centerName: req.params.centerName } })
+      .then((centers) => {
+        if (!centers) {
+          return messageStatus(404, 'center not found', res);
+        }
+        Center.destroy({
+          where: {
+            centerName: req.params.centerName,
+          }
+        })
+          .then((deletedcenters) => {
+            if (!deletedcenters) {
+              return messageStatus(500, 'center unable to delete, try again', res);
+            }
+            return res.status(200).json({ message: 'center deleted' });
+          });
+      });
   }
 }
 

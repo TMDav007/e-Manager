@@ -1,7 +1,26 @@
 language : node_js
+node_js: 'stable'
+install:
+  - npm install
 
-node_js : 
-   - "node"
+script:
+  - npm test
+env:
+  - NODE_ENV=test
+
+cache:
+  directories:
+    - "node_modules"
+
+services :
+  - postgresql
+
+before_script:
+  - createuser tolu -s -U postgres
+  - createdb database_test --username=tolu
+  - sequelize db:migrate
+
+  
 
 COVERALLS_REPO_TOKEN: YtcddTyvMkCkdLZXWbcH3TjqmxeQp26Mg
 
