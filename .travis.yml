@@ -5,6 +5,8 @@ node_js :
 
 services :
   - "postgresql"
+  
+dist: trusty
 
 addons: 
   postgresql: "10"
