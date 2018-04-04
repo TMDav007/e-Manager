@@ -57,16 +57,16 @@ class eventController {
             if (existingUser) {
               return res.status(409).json({ error: 'email already existing' });
             }
+            User.create({
+              name: req.body.name,
+              email: req.body.email,
+              phoneNo: req.body.phoneNo,
+              password: hash,
+            }).then((user) => {
+              const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: 86400 });
+              return res.status(200).json({ authentication: true, message: 'sign up successful', token });
+            }).catch(() => res.status(401).send());
           });
-        User.create({
-          name: req.body.name,
-          email: req.body.email,
-          phoneNo: req.body.phoneNo,
-          password: hash,
-        }).then((user) => {
-          const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: 86400 });
-          return res.status(200).json({ authentication: true, message: 'sign up successful', token });
-        }).catch(() => res.status(401).send());
       });
     });
   }
