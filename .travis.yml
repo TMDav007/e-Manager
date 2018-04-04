@@ -15,9 +15,7 @@ addons:
     - postgresql-10 
 script:
   - npm run test
-before_script:
-  - psql  'createdb e-Manager;' -U postgres
-  - cp database.yml.travis config/database.yml
+
 
   
 
