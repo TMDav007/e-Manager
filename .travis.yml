@@ -13,10 +13,9 @@ addons:
   apt:
     packages: 
     - postgresql-10 
-    - postgresql-client-10
 
 before_script:
-  - psql -c 'localhost 5432 createdb e-Manager;' -U postgres
+  - psql  'createdb e-Manager;' -U postgres
   - cp database.yml.travis config/database.yml
 
   
