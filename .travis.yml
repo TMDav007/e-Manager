@@ -16,7 +16,7 @@ addons:
     - postgresql-client-10
 
 before_script:
-  - psql -c 'createdb e-Manager;'
+  - psql -c 'localhost 5432 createdb e-Manager;' -U postgres
   - cp database.yml.travis config/database.yml
 
   
