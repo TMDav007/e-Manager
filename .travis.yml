@@ -7,7 +7,7 @@ services :
   - "postgresql"
 
 before_script:
-  - psql --host=127.0.0.1 --port=5432 --username=postgres --password --dbname=e_Manager
+  - psql --host=127.0.0.1 --port=5432 --username=postgres --password='opeyemi007' --dbname=e_Manager
  
 addons: 
   postgresql: "10"
