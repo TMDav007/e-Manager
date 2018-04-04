@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from './../server';
-import Model from './../models/';
+import Model from './../models';
 
 const { User } = Model;
 
@@ -11,8 +11,38 @@ process.env.NODE_ENV = 'test';
 const should = chai.should();
 
 chai.use(chaiHttp);
-
+// variable details
 const centerName = `lekki-event${Math.random()}`;
+const date = `12/09/2019${Math.random()}`;
+let token = '';
+
+const user = {
+  name: 'fififi',
+  email: `me2you${Math.random()}@yahoo.com `,
+  phoneNo: '08095483746',
+  password: 'Opeyemi22',
+  confirmPassword: 'Opeyemi22',
+};
+
+const loginDetails = {
+  email: user.email,
+  password: user.password
+};
+
+const center = {
+  centerName,
+  price: '500,000',
+  location: 'lagos',
+};
+
+const event = {
+  location: 'lagos',
+  center: 'Oriental',
+  eventType: 'Concert',
+  date,
+  duration: 4,
+  amount: '500,000',
+};
 
 describe('Login and checkToken', () => {
   beforeEach((done) => {
@@ -24,40 +54,26 @@ describe('Login and checkToken', () => {
 
 // Test for sign up
 describe('/user ', () => {
-  it('it should signup user', (done) => {
+  it('it should signup user', () => {
     // variable details
-    const signUpDetails = {
-      name: 'fififi',
-      email: `me2you${Math.random()}@yahoo.com `,
-      phoneNo: '08095483746',
-      password: 'Opeyemi22',
-      confirmPassword: 'Opeyemi22',
-    };
     chai.request(app)
       .post('/users/')
-      .send(signUpDetails)
-      .end((err, res) => {
+      .send(user)
+      .then((res) => {
         res.should.have.status(200);
         res.body.should.have.property('authentication');
         res.body.authentication.should.eql(true);
         res.body.should.have.property('message');
         res.body.message.should.eql('sign up successful');
         res.body.should.have.property('token');
-        done();
       });
   });
 
   it('it should not signup user', (done) => {
     // variable details
-    const signUpDetails = {
-      name: '',
-      email: 'me2you@yahoo.com',
-      phoneNo: '0803526578',
-      password: 'opeyemi'
-    };
     chai.request(app)
       .post('/users')
-      .send(signUpDetails)
+      .field('name', user.name = '')
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.have.property('error');
@@ -66,205 +82,150 @@ describe('/user ', () => {
       });
   });
 
-  it('it should not signup user with no email', (done) => {
+  it('it should not signup user with no email', () => {
     // variable details
-    const signUpDetails = {
-      name: 'opeyehbhx',
-      email: '',
-      phoneNo: '0803526578',
-      password: 'opeyemi'
-    };
     chai.request(app)
       .post('/users')
-      .send(signUpDetails)
-      .end((err, res) => {
+      .field('name', user.name)
+      .field('email', user.email = '')
+      .then((err, res) => {
         res.should.have.status(400);
         res.body.should.have.property('error');
         res.body.error.should.eql('email is required');
-        done();
       });
   });
 
-  it('it should not signup user with an empty phone no', (done) => {
+  it('it should not signup user with an empty password', () => {
     // variable details
-    const signUpDetails = {
-      name: 'opdhfhjdf',
-      email: 'me2you@yahoo.com',
-      phoneNo: '',
-      password: 'opeyemi'
-    };
+    user.password = '';
     chai.request(app)
       .post('/users')
-      .send(signUpDetails)
-      .end((err, res) => {
+      .field('name', user.name)
+      .field('email', user.email)
+      .field('password', user.password)
+      .then((err, res) => {
         res.should.have.status(400);
         res.body.should.have.property('error');
         res.body.error.should.eql('phone number is required');
-        done();
       });
   });
 
-  it('it should not signup user with an invalid phone nunber', (done) => {
+  it('it should not signup user with an invalid phone nunber', () => {
     // variable details
-    const signUpDetails = {
-      name: 'opdhfhjdf',
-      email: 'me2you@yahoo.com',
-      phoneNo: 'dfg4567777' || '093895979473976597947',
-      password: 'opeyemi'
-    };
+    user.phoneNo = 'dfg4567777' || '093895979473976597947';
     chai.request(app)
       .post('/users')
-      .send(signUpDetails)
-      .end((err, res) => {
+      .field('name', user.name)
+      .field('email', user.email)
+      .field('password', user.password)
+      .field('phoneNo', user.phoneNo)
+      .then((err, res) => {
         res.should.have.status(400);
         res.body.should.have.property('error');
         res.body.error.should.eql('valid phone number required');
-        done();
       });
   });
 
-  it('it should not signup user with an unconfirmed password', (done) => {
+  it('it should not signup user with an unconfirmed password', () => {
     // variable details
-    const signUpDetails = {
-      name: 'fififi',
-      email: 'me22you@yahoo.com',
-      phoneNo: '09389979947',
-      password: 'Opeyemi2',
-    };
+    user.confirmPassword = 'hdhdgs';
     chai.request(app)
       .post('/users')
-      .send(signUpDetails)
-      .end((err, res) => {
+      .field('name', user.name)
+      .field('email', user.email)
+      .field('password', user.password)
+      .field('phoneNo', user.phoneNo)
+      .field('confirmPassword', user.confirmPassword)
+      .then((err, res) => {
         res.should.have.status(400);
         res.body.should.have.property('error');
         res.body.error.should.eql('password not confirmed');
-        done();
       });
   });
 });
 
-
 // test for login
 describe('/login a user', () => {
-  it('it should not login with an incorrect email ', (done) => {
+  it('it should not login with an incorrect email ', () => {
     // variable details
-    const loginDetails = {
-      email: 'meyou@yahoo.com',
-      password: 'opeyemi'
-    };
-
+    loginDetails.email = 'sddshgjs';
     // login users details
     chai.request(app)
       .post('/users/login')
-      .send(loginDetails)
-      .end((err, res) => {
+      .field('email', loginDetails.email)
+      .then((err, res) => {
         res.should.have.status(404);
         res.body.should.be.a('object');
         res.body.should.have.property('error');
         res.body.error.should.eql('email not found');
-        done();
+      });
+  });
+
+  it('it should login ', () => {
+    chai.request(app)
+      .post('/users/login')
+      .field('email', loginDetails.email)
+      .field('password', loginDetails.password)
+      .then((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        /* eslint-disable prefer-destructuring */
+        token = res.body.data.token;
       });
   });
 });
 
 describe('/login a user', () => {
-  it('it should not login with an incorrect password ', (done) => {
+  it('it should not login with an incorrect password ', () => {
     // variable details
-    const loginDetails = {
-      email: 'me2you@yahoo.com',
-      password: 'opeyem'
-    };
+    loginDetails.password = 'sddshgjs';
 
     // login users details
     chai.request(app)
       .post('/users/login')
-      .send(loginDetails)
-      .end((err, res) => {
+      .field('email', loginDetails.email)
+      .field('password', loginDetails.password)
+      .then((err, res) => {
         res.should.have.status(401);
         res.body.should.be.a('object');
         res.body.should.have.property('authentication');
         res.body.authentication.should.eql(false);
         res.body.should.have.property('token');
-        done();
       });
   });
 });
 
 // POST centers
 describe('/POST a center', () => {
-  it('it should create a center after authenicating user', (done) => {
-    // variable details
-    const loginDetails = {
-      email: 'me2you@yahoo.com',
-      password: 'opeyemi'
-    };
-
-    const center = {
-      centerName,
-      price: '500,000',
-      location: 'lagos',
-    };
-
-    // login users details
+  it('it should create a center after authenicating user', () => {
     chai.request(app)
-      .post('/users/login')
-      .send(loginDetails)
-      .end((err, res) => {
+      .post('/centers/')
+      .set('x-access-token', token)
+      .field('centerName', center.centerName)
+      .field('price', center.price)
+      .field('location', center.location)
+      .then((err, res) => {
         res.body.should.be.a('object');
-        res.body.should.have.property('authentication');
-        res.body.authentication.should.eql(true);
-        res.body.should.have.property('token');
-        /* eslint-disable prefer-destructuring */
-        const token = res.body.token;
-        chai.request(app)
-          .post('/centers/')
-          .set('x-access-token', token)
-          .send(center)
-          .end((err, res) => {
-            res.body.should.be.a('object');
-            res.body.should.be.property('message');
-            res.body.message.should.eql('center created');
-            res.body.should.have.property('center');
-            done();
-          });
+        res.body.should.be.property('message');
+        res.body.message.should.eql('center created');
+        res.body.should.have.property('center');
+        center.id = res.body.data.id;
       });
   });
 
-  it('it should not create a center with an existing center name', (done) => {
+  it('it should not create a center with an existing center name', () => {
     // variable details
-    const loginDetails = {
-      email: 'me2you@yahoo.com',
-      password: 'opeyemi'
-    };
 
-    const center = {
-      centerName: 'lekki-Event',
-      price: '500,000',
-      location: 'lagos',
-    };
-
-    // login users details
+    center.centerName = 'lekki-Event';
     chai.request(app)
-      .post('/users/login')
-      .send(loginDetails)
-      .end((err, res) => {
+      .post('/centers/')
+      .set('x-access-token', token)
+      .field('centerName', center.centerName)
+      .then((err, res) => {
+        res.should.have.status(409);
         res.body.should.be.a('object');
-        res.body.should.have.property('authentication');
-        res.body.authentication.should.eql(true);
-        res.body.should.have.property('token');
-        /* eslint-disable prefer-destructuring */
-        const token = res.body.token;
-        chai.request(app)
-          .post('/centers/')
-          .set('x-access-token', token)
-          .send(center)
-          .end((err, res) => {
-            res.should.have.status(409);
-            res.body.should.be.a('object');
-            res.body.should.have.property('error');
-            res.body.error.should.eql('center name already existing');
-            done();
-          });
+        res.body.should.have.property('error');
+        res.body.error.should.eql('center name already existing');
       });
   });
 });
@@ -272,141 +233,58 @@ describe('/POST a center', () => {
 // get a center
 
 describe('/get a center', () => {
-  it('it should get a center', (done) => {
-    // variable details
-    const loginDetails = {
-      email: 'me2you@yahoo.com',
-      password: 'opeyemi'
-    };
-
-    const id = 2;
-
+  it('it should get a center', () => {
     // login users details
     chai.request(app)
-      .post('/users/login')
-      .send(loginDetails)
-      .end((err, res) => {
+      .get(`/centers/${center.id}`)
+      .set('x-access-token', token)
+      .then((err, res) => {
+        res.should.have.status(200);
         res.body.should.be.a('object');
-        res.body.should.have.property('authentication');
-        res.body.authentication.should.eql(true);
-        res.body.should.have.property('token');
-
-        /* eslint-disable prefer-destructuring */
-        const token = res.body.token;
-        chai.request(app)
-          .get(`/centers/${id}`)
-          .set('x-access-token', token)
-          .end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            res.body.should.have.property('message');
-            res.body.message.should.eql('success');
-            res.body.should.have.property('center');
-            done();
-          });
+        res.body.should.have.property('message');
+        res.body.message.should.eql('success');
+        res.body.should.have.property('center');
+        center.id = res.body.data.id;
       });
   });
 
-  it('it should not get a center', (done) => {
-    // variable details
-    const loginDetails = {
-      email: 'me2you@yahoo.com',
-      password: 'opeyemi'
-    };
-
-    const id = 0;
-
-    // login users details
+  it('it should not get a center', () => {
     chai.request(app)
-      .post('/users/login')
-      .send(loginDetails)
-      .end((err, res) => {
+      .get(`/centers/${20000}`)
+      .set('x-access-token', token)
+      .then((err, res) => {
+        res.should.have.status(404);
         res.body.should.be.a('object');
-        res.body.should.have.property('authentication');
-        res.body.authentication.should.eql(true);
-        res.body.should.have.property('token');
-
-        /* eslint-disable prefer-destructuring */
-        const token = res.body.token;
-        chai.request(app)
-          .get(`/centers/${id}`)
-          .set('x-access-token', token)
-          .end((err, res) => {
-            res.should.have.status(404);
-            res.body.should.be.a('object');
-            res.body.should.have.property('error');
-            res.body.error.should.eql('center not found');
-            done();
-          });
+        res.body.should.have.property('error');
+        res.body.error.should.eql('center not found');
       });
   });
 });
 
 // update a center
 describe('/put a center', () => {
-  it('it should update a center', (done) => {
-    // variable details
-    const loginDetails = {
-      email: 'me2you@yahoo.com',
-      password: 'opeyemi'
-    };
-    // login users details
+  it('it should update a center', () => {
     chai.request(app)
-      .post('/users/login')
-      .send(loginDetails)
-      .end((err, res) => {
+      .put(`/centers/${center.centerName}`)
+      .set('x-access-token', token)
+      .field('location', center.location = 'oyo')
+      .then((err, res) => {
+        res.should.have.status(200);
         res.body.should.be.a('object');
-        res.body.should.have.property('authentication');
-        res.body.authentication.should.eql(true);
-        res.body.should.have.property('token');
-
-        /* eslint-disable prefer-destructuring */
-        const token = res.body.token;
-        chai.request(app)
-          .put(`/centers/${centerName}`)
-          .set('x-access-token', token)
-          .send({ location: 'oyo' })
-          .end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            res.body.should.have.property('message');
-            res.body.message.should.eql('success');
-            done();
-          });
+        res.body.should.have.property('message');
+        res.body.message.should.eql('success');
       });
   });
 
-  it('it should not update a center', (done) => {
-    // variable details
-    const loginDetails = {
-      email: 'me2you@yahoo.com',
-      password: 'opeyemi'
-    };
-
-    const centerNames = 'orange-evt';
-
-    // login users details
+  it('it should not update a center', () => {
     chai.request(app)
-      .post('/users/login')
-      .send(loginDetails)
-      .end((err, res) => {
+      .put(`/centers/${'orange-evt'}`)
+      .set('x-access-token', token)
+      .then((err, res) => {
+        res.should.have.status(404);
         res.body.should.be.a('object');
-        res.body.should.have.property('authentication');
-        res.body.authentication.should.eql(true);
-        res.body.should.have.property('token');
-
-        /* eslint-disable prefer-destructuring */
-        const token = res.body.token;
-        chai.request(app)
-          .put(`/centers/${centerNames}`)
-          .set('x-access-token', token)
-          .end((err, res) => {
-            res.should.have.status(404);
-            res.body.should.be.a('object');
-            res.body.should.have.property('error');
-            res.body.error.should.eql('center not found');
-            done();
-          });
+        res.body.should.have.property('error');
+        res.body.error.should.eql('center not found');
       });
   });
 });
@@ -414,67 +292,132 @@ describe('/put a center', () => {
 // Delete a center
 describe('/Delete a center', () => {
   // DELETE a center
-  it('it should delete a center', (done) => {
-    // variable details
-    const loginDetails = {
-      email: 'me2you@yahoo.com',
-      password: 'opeyemi'
-    };
-
-    // login users details
+  it('it should delete a center', () => {
     chai.request(app)
-      .post('/users/login')
-      .send(loginDetails)
-      .end((err, res) => {
+      .delete(`/centers/${center.centerName}`)
+      .set('x-access-token', token)
+      .then((err, res) => {
+        res.should.have.status(200);
         res.body.should.be.a('object');
-        res.body.should.have.property('authentication');
-        res.body.authentication.should.eql(true);
-        res.body.should.have.property('token');
-
-        /* eslint-disable prefer-destructuring */
-        const token = res.body.token;
-        chai.request(app)
-          .delete(`/centers/${centerName}`)
-          .set('x-access-token', token)
-          .end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            res.body.should.have.property('message');
-            res.body.message.should.eql('center deleted');
-            done();
-          });
+        res.body.should.have.property('message');
+        res.body.message.should.eql('center deleted');
       });
   });
 
-  it('it should not delete a center', (done) => {
-    // variable details
-    const loginDetails = {
-      email: 'me2you@yahoo.com',
-      password: 'opeyemi'
-    };
-
-    // login users details
+  it('it should not delete a center', () => {
     chai.request(app)
-      .post('/users/login')
-      .send(loginDetails)
-      .end((err, res) => {
+      .delete(`/centers/${center.centerName}`)
+      .set('x-access-token', token)
+      .then((err, res) => {
+        res.should.have.status(404);
         res.body.should.be.a('object');
-        res.body.should.have.property('authentication');
-        res.body.authentication.should.eql(true);
-        res.body.should.have.property('token');
+        res.body.should.have.property('error');
+        res.body.error.should.eql('center not found');
+      });
+  });
+});
 
-        /* eslint-disable prefer-destructuring */
-        const token = res.body.token;
-        chai.request(app)
-          .delete(`/centers/${centerName}`)
-          .set('x-access-token', token)
-          .end((err, res) => {
-            res.should.have.status(404);
-            res.body.should.be.a('object');
-            res.body.should.have.property('error');
-            res.body.error.should.eql('center not found');
-            done();
-          });
+// Test for /Post event
+describe('/POST an event', () => {
+  it('it should create an event after authenicating user', () => {
+    chai.request(app)
+      .post('/events/')
+      .set('x-access-token', token)
+      .field('location', event.location)
+      .field('center', event.center)
+      .field('eventType', event.eventType)
+      .field('date', event.date)
+      .field('duration', event.duration)
+      .field('amount', event.amount)
+      .then((err, res) => {
+        res.body.should.be.a('object');
+        res.body.should.be.property('message');
+        res.body.message.should.eql('success');
+        res.body.should.have.property('event');
+        event.id = res.body.data.id;
+      });
+  });
+
+  it('it should not create a event with an existing event date', () => {
+    chai.request(app)
+      .post('/events/')
+      .set('x-access-token', token)
+      .field('date', event.date)
+      .then((err, res) => {
+        res.should.have.status(409);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
+        res.body.error.should.eql('date already existing');
+      });
+  });
+
+  it('it should not create a event with an invalid event type', () => {
+    chai.request(app)
+      .post('/events/')
+      .set('x-access-token', token)
+      .field('location', event.location)
+      .field('center', event.center)
+      .field('eventType', event.eventType = 'others')
+      .then((err, res) => {
+        res.should.have.status(409);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
+        res.body.error.should.eql('event type is required!!!');
+      });
+  });
+});
+
+describe('/put a event', () => {
+  it('it should update a event', () => {
+    chai.request(app)
+      .put(`/events/${center.id}`)
+      .set('x-access-token', token)
+      .field('location', event.location = 'oyo')
+      .then((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message');
+        res.body.message.should.eql('success');
+        res.body.should.have.property('updatedEvent');
+      });
+  });
+
+  it('it should not update a event', () => {
+    chai.request(app)
+      .put(`/events/${0}`)
+      .set('x-access-token', token)
+      .then((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
+        res.body.error.should.eql('event not found');
+      });
+  });
+});
+
+// Delete an event
+describe('/Delete an event', () => {
+  // DELETE a center
+  it('it should delete an event', () => {
+    chai.request(app)
+      .delete(`/events/${event.id}`)
+      .set('x-access-token', token)
+      .then((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message');
+        res.body.message.should.eql('event deleted');
+      });
+  });
+  it('it should not delete a event', () => {
+    chai.request(app)
+      .delete(`/events/${0}`)
+      .set('x-access-token', token)
+      .then((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
+        res.body.error.should.eql('event not found');
       });
   });
 });

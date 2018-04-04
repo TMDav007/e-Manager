@@ -2,9 +2,6 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from './../server';
 
-
-process.env.NODE_ENV = 'test';
-
 /* eslint-disable no-unused-vars */
 const should = chai.should();
 
