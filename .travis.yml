@@ -8,6 +8,10 @@ script:
 env:
   - NODE_ENV=test
 
+cache:
+  directories:
+    - "node_modules"
+
 services :
   - postgresql
 
