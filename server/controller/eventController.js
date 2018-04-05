@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import Model from './../models';
 import middlewareFunction from './../middleware/middlewareFunction';
-import controlFunction from './controllerFunctions';
 
 const { Event, User } = Model;
 
