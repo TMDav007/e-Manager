@@ -4,4 +4,6 @@ exclude_patterns:
 - "server/test"
 - "server/models"
 - "server/controller"
+- "server/migrations"
+- "server/config"
 - "dist/"
