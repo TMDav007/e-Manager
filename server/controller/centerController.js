@@ -25,12 +25,13 @@ class centerController {
           price: req.body.price,
           location: req.body.location,
           image: req.body.image,
+          userId: req.body.userId,
         })
           .then((centerCreated) => {
             if (!centerCreated) {
               return middlewareFunction.errorStatus(500, 'server error. center not created', res);
             }
-            return res.status(200).send({ message: 'center created', center });
+            return res.status(200).send({ message: 'center created', centerCreated });
           }).catch(() => res.status(400).send());
       });
   }

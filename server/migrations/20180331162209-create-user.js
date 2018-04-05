@@ -4,6 +4,7 @@ module.exports = {
       id: {
         allowNull: false,
         autoIncrement: true,
+        primaryKey: true,
         type: Sequelize.INTEGER
       },
       name: {
@@ -13,7 +14,7 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false,
-        primaryKey: true,
+        unique: true,
       },
       phoneNo: {
         type: Sequelize.STRING,
@@ -22,6 +23,11 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      role: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 'member',
       },
       createdAt: {
         allowNull: false,

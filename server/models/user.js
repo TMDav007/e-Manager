@@ -20,12 +20,10 @@ export default (sequelize, DataTypes) => {
   User.associate = (models) => {
     // associations can be defined here
     User.hasMany(models.Event, {
-      foreignKey: 'id',
-      onDelete: 'CASCADE',
+      foreignKey: 'userId',
     });
     User.hasMany(models.Center, {
-      foreignKey: 'User',
-      onDelete: 'CASCADE',
+      foreignKey: 'userId',
     });
   };
   return User;

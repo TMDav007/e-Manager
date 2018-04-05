@@ -35,20 +35,22 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    centerId: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      onDelete: 'set null',
+      references: {
+        model: 'Centers',
+        key: 'id',
+      }
+    },
     userId: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
+      allowNull: true,
       onDelete: 'CASCADE',
       references: {
         model: 'Users',
-        key: 'email'
-      }
-    },
-    Center: {
-      type: Sequelize.STRING,
-      onDelete: 'CASCADE',
-      references: {
-        model: 'Centers',
-        key: 'centerName'
+        key: 'id'
       }
     },
     createdAt: {

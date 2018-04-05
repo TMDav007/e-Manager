@@ -33,6 +33,7 @@ const center = {
   centerName,
   price: '500,000',
   location: 'lagos',
+  userId: 1,
 };
 
 const event = {
@@ -42,6 +43,8 @@ const event = {
   date,
   duration: 4,
   amount: '500,000',
+  centerId: 1,
+  userId: 1,
 };
 
 describe('Login and checkToken', () => {
@@ -112,7 +115,7 @@ describe('/user ', () => {
 
   it('it should not signup user with an invalid phone nunber', () => {
     // variable details
-    user.phoneNo = 'dfg4567777' || '093895979473976597947';
+    user.phoneNo = 'dfg4567777';
     chai.request(app)
       .post('/users')
       .field('name', user.name)
@@ -204,6 +207,7 @@ describe('/POST a center', () => {
       .field('centerName', center.centerName)
       .field('price', center.price)
       .field('location', center.location)
+      .field('userId', center.userId)
       .then((err, res) => {
         res.body.should.be.a('object');
         res.body.should.be.property('message');
@@ -329,6 +333,8 @@ describe('/POST an event', () => {
       .field('date', event.date)
       .field('duration', event.duration)
       .field('amount', event.amount)
+      .field('centerId', event.centerId)
+      .field('userId', event.userId)
       .then((err, res) => {
         res.body.should.be.a('object');
         res.body.should.be.property('message');
