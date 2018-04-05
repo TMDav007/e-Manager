@@ -16,8 +16,8 @@ The application templates is on https://tmdav007.github.io/e-Manager/
 - Start API server with command:
   > npm start
 
-- use the url :
-  > http:localhost:3000
+- use the url on Postman:
+  > http://localhost:3000
 
 - Run test with:
   > npm test
@@ -29,48 +29,26 @@ The application templates is on https://tmdav007.github.io/e-Manager/
  - for centers:
     >  https://evt-manager.herokuapp.com/api/centers
     
-### API Routes for events
- - The API route to add an event:
+### API Routes
+ - The API route to add:
  
     > POST: /
     
- - The API route to get all events:
+ - The API route to get all:
  
     > GET: /
     
- - The API route to get an event:
+ - The API route to get by id:
  
     > GET: /id/
     
-- The API route to edit an event:
+- The API route to edit:
 
     > PUT: /id/
     
-- The API route to delete an event:
+- The API route to delete:
 
     > DELETE: /id/
-    
-### API Routes for centers
- - The API route to add a center:
- 
-    > POST: /
-    
- - The API route to get all centers:
- 
-    > GET: /
-    
- - The API route to get a center:
- 
-    > GET: /id/
-    
-- The API route to edit a center:
-
-    > PUT: /id/
-    
-- The API route to delete a center:
-
-    > DELETE: /id/
- 
 
 
 ## API Documentation
