@@ -3,4 +3,5 @@ exclude_patterns:
 - "coverage"
 - "server/test"
 - "server/models"
+- "server/controller"
 - "dist/"

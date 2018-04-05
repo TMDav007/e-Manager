@@ -1,8 +1,6 @@
-
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import Model from './../models';
-import messageStatus from './../middleware/middlewareFunction';
+import middlewareFunction from './../middleware/middlewareFunction';
 
 const { Center } = Model;
 
@@ -20,7 +18,7 @@ class centerController {
     Center.findOne({ where: { centerName: req.body.centerName } })
       .then((center) => {
         if (center) {
-          return messageStatus(409, 'center name already existing', res);
+          return middlewareFunction.errorStatus(409, 'center name already existing', res);
         }
         Center.create({
           centerName: req.body.centerName,
@@ -30,7 +28,7 @@ class centerController {
         })
           .then((centerCreated) => {
             if (!centerCreated) {
-              return messageStatus(500, 'server error. center not created', res);
+              return middlewareFunction.errorStatus(500, 'server error. center not created', res);
             }
             return res.status(200).send({ message: 'center created', center });
           }).catch(() => res.status(400).send());
@@ -48,7 +46,7 @@ class centerController {
     return Center.findById(req.params.id)
       .then((center) => {
         if (!center) {
-          return messageStatus(404, 'center not found', res);
+          return middlewareFunction.errorStatus(404, 'center not found', res);
         }
         return res.status(200).json({ message: 'success', center });
       });
@@ -66,7 +64,7 @@ class centerController {
     return Center.findAll()
       .then((centers) => {
         if (!centers) {
-          return messageStatus(500, 'unable to get all center, try again', res);
+          return middlewareFunction.errorStatus(500, 'unable to get all center, try again', res);
         }
         return res.status(200).send({ message: 'success', centers });
       });
@@ -82,7 +80,7 @@ class centerController {
     Center.findOne({ where: { centerName: req.params.centerName } })
       .then((center) => {
         if (!center) {
-          return messageStatus(404, 'center not found', res);
+          return middlewareFunction.errorStatus(404, 'center not found', res);
         }
         Center.update({
           centerName: req.body.centerName || center.centerName,
@@ -95,7 +93,7 @@ class centerController {
           },
         }).then((updatedCenter) => {
           if (!updatedCenter) {
-            return messageStatus(500, 'center could not be updated, try again', res);
+            return middlewareFunction.errorStatus(500, 'center could not be updated, try again', res);
           }
           return res.status(200).json({ message: 'success' });
         });
@@ -112,7 +110,7 @@ class centerController {
     Center.findOne({ where: { centerName: req.params.centerName } })
       .then((centers) => {
         if (!centers) {
-          return messageStatus(404, 'center not found', res);
+          return middlewareFunction.errorStatus(404, 'center not found', res);
         }
         Center.destroy({
           where: {
@@ -121,7 +119,7 @@ class centerController {
         })
           .then((deletedcenters) => {
             if (!deletedcenters) {
-              return messageStatus(500, 'center unable to delete, try again', res);
+              return middlewareFunction.errorStatus(500, 'center unable to delete, try again', res);
             }
             return res.status(200).json({ message: 'center deleted' });
           });
