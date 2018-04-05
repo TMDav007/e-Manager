@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
-import errorStatus from './middlewareFunction';
-import { error } from 'util';
+import middlewareFunction from './middlewareFunction';
 
 const number = /\d{8}/g;
 const password = /^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+
 
 const authenicateUser = (req, res, next) => {
   const token = req.headers['x-access-token'] || req.body.token || req.query.token;
@@ -18,53 +18,32 @@ const authenicateUser = (req, res, next) => {
 };
 
 const validateSignUp = (req, res, next) => {
-  if (req.body.name === '' || req.body.name === undefined) {
-    return errorStatus(400, 'name is required', res);
-  }
-  if (req.body.name.length < 5) {
-    return errorStatus(400, 'name is too short', res);
-  }
-
-  if (req.body.email === undefined || req.body.email === '') {
-    return errorStatus(400, 'email is required', res);
-  }
-
-  if (req.body.phoneNo === '' || req.body.phoneNo === undefined) {
-    return errorStatus(400, 'phone number is required', res);
-  }
+  middlewareFunction.checkField(req.body.name, 'name', res);
+  middlewareFunction.checkField(req.body.email, 'email', res);
+  middlewareFunction.checkField(req.body.phoneNo, 'phone number', res);
   if (!(number.test(req.body.phoneNo)) || req.body.phoneNo.length > 13) {
-    return errorStatus(400, 'valid phone number required', res);
+    middlewareFunction.errorStatus(400, 'valid phone number required', res);
   }
-  if (req.body.password.length < 6) {
-    return errorStatus(400, 'password is too short', res);
-  }
-  if (req.body.password === undefined) {
-    return errorStatus(400, 'password is required', res);
-  }
+  middlewareFunction.checkField(req.body.password, 'password', res);
   if (!(password.test(req.body.password))) {
-    return errorStatus(400, 'password should be a combination of uppercase,lowercase and numbers', res);
-  }
-  if (req.body.password !== req.body.confirmPassword) {
-    return errorStatus(400, 'password not confirmed', res);
+    middlewareFunction.errorStatus(400, 'password should be a combination of uppercase,lowercase and numbers', res);
+  } else if (req.body.password !== req.body.confirmPassword) {
+    middlewareFunction.errorStatus(400, 'password not confirmed', res);
   }
   return next();
 };
 
 const validateLoginIn = (req, res, next) => {
-  if (req.body.email === undefined) {
-    return errorStatus(400, 'email is required', res);
-  }
-  if (req.body.password === undefined || req.body.password === '') {
-    return errorStatus(400, 'password is required', res);
-  }
-  return next();
+  middlewareFunction.checkField(req.body.email, 'email', res);
+  middlewareFunction.checkField(req.body.password, 'password', res);
+  next();
 };
 
 const validateEvent = (req, res, next) => {
   if (req.body.eventType === 'others' && (req.body.others === '' || req.body.others === undefined)) {
-    return errorStatus(409, 'event type is required!!!', res);
+    middlewareFunction.errorStatus(409, 'event type is required!!!', res);
   }
-  return next();
+  next();
 };
 
 export default {

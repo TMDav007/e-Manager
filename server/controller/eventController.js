@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import Model from './../models';
-import messageStatus from './../middleware/middlewareFunction';
+import middlewareFunction from './../middleware/middlewareFunction';
 
 const { Event, User } = Model;
 
@@ -21,7 +21,7 @@ class eventController {
     Event.findOne({ where: { date: req.body.date } })
       .then((existedDate) => {
         if (existedDate) {
-          return messageStatus(409, 'date already existing', res);
+          return middlewareFunction.errorStatus(409, 'date already existing', res);
         }
         Event.create({
           location: req.body.location,
@@ -57,16 +57,16 @@ class eventController {
             if (existingUser) {
               return res.status(409).json({ error: 'email already existing' });
             }
+            User.create({
+              name: req.body.name,
+              email: req.body.email,
+              phoneNo: req.body.phoneNo,
+              password: hash,
+            }).then((user) => {
+              const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: 86400 });
+              return res.status(200).json({ authentication: true, message: 'sign up successful', token });
+            }).catch(() => res.status(401).send());
           });
-        User.create({
-          name: req.body.name,
-          email: req.body.email,
-          phoneNo: req.body.phoneNo,
-          password: hash,
-        }).then((user) => {
-          const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: 86400 });
-          return res.status(200).json({ authentication: true, message: 'sign up successful', token });
-        }).catch(() => res.status(401).send());
       });
     });
   }
@@ -81,7 +81,7 @@ class eventController {
     User.findOne({ where: { email: req.body.email } })
       .then((user) => {
         if (!user) {
-          return messageStatus(404, 'email not found', res);
+          return middlewareFunction.errorStatus(404, 'email not found', res);
         }
         const validPassword = bcrypt.compareSync(req.body.password, user.password);
         if (!validPassword) {
@@ -102,7 +102,7 @@ class eventController {
     Event.findById(req.params.id)
       .then((event) => {
         if (!event) {
-          return messageStatus(404, 'event not found', res);
+          return middlewareFunction.errorStatus(404, 'event not found', res);
         }
         Event.update({
           location: req.body.location || event.location,
@@ -118,7 +118,7 @@ class eventController {
           },
         }).then((updatedEvent) => {
           if (!updatedEvent) {
-            return messageStatus(500, 'event could not be updated, try again', res);
+            return middlewareFunction.errorStatus(500, 'event could not be updated, try again', res);
           }
           return res.status(200).json({ message: 'success', updatedEvent });
         });
@@ -135,7 +135,7 @@ class eventController {
     Event.findById(req.params.id)
       .then((event) => {
         if (!event) {
-          return messageStatus(404, 'event not found', res);
+          return middlewareFunction.errorStatus(404, 'event not found', res);
         }
         Event.destroy({
           where: {
@@ -144,7 +144,7 @@ class eventController {
         })
           .then((deletedEvent) => {
             if (!deletedEvent) {
-              return messageStatus(500, 'event unable to delete, try again', res);
+              return middlewareFunction.errorStatus(500, 'event unable to delete, try again', res);
             }
             return res.status(200).json({ message: 'event deleted' });
           });

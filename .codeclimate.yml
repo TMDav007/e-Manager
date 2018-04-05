@@ -2,4 +2,6 @@ exclude_patterns:
 - "template"
 - "coverage"
 - "server/test"
+- "server/models"
+- "server/controller"
 - "dist/"
