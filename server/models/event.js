@@ -32,12 +32,10 @@ export default (sequelize, DataTypes) => {
   Event.associate = (models) => {
     // associations can be defined here
     Event.belongsTo(models.Center, {
-      foreignKey: 'center',
-      onDelete: 'CASCADE',
+      foreignKey: 'centerId',
     });
     Event.belongsTo(models.User, {
-      foreignKey: 'id',
-      onDelete: 'CASCADE',
+      foreignKey: 'userId',
     });
   };
   return Event;

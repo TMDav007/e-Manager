@@ -4,11 +4,11 @@ module.exports = {
       id: {
         allowNull: false,
         autoIncrement: true,
+        primaryKey: true,
         type: Sequelize.INTEGER
       },
       centerName: {
         type: Sequelize.STRING,
-        primaryKey: true,
         allowNull: false,
       },
       price: {
@@ -23,14 +23,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      User: {
-        type: Sequelize.STRING,
+      userId: {
+        type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
           model: 'Users',
-          key: 'email'
-        }
+          key: 'id',
       },
+      allowNull: false,
+    },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

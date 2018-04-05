@@ -31,6 +31,8 @@ class eventController {
           date: req.body.date,
           duration: req.body.duration,
           amount: req.body.amount,
+          centerId: req.body.centerId,
+          userId: req.body.userId,
         })
           .then((event) => {
             if (!event) {
@@ -111,7 +113,9 @@ class eventController {
           others: req.body.others || event.others,
           date: req.body.date || event.date,
           duration: req.body.duration || event.duration,
-          amount: req.body.amount || event.amount
+          amount: req.body.amount || event.amount,
+          centerId: req.body.centerId || event.centerId,
+          userId: req.body.userId || event.userId,
         }, {
           where: {
             id: req.params.id,
