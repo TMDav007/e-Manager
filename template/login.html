@@ -1,92 +1,85 @@
 <!DOCTYPE html>
-<html class="no-js"> <!--<![endif]-->
-   <head>
-       <meta charset="utf-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1">       
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <title>e-Manager | Login</title>
-       <meta name="description" content="">
-       <meta name="viewport" content="width=device-width, initial-scale=1">
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-       <link rel = "stylesheet" href="style.css">
-       <link href="https://fonts.googleapis.com/css?family=Acme|Anton|Fugaz+One|Great+Vibes|Parisienne|Satisfy" rel="stylesheet">
-       <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-       
-   </head>
-   <body>
-      <header>
-            <div class = "container">
-                <div id = "branding">
-                    <h1><span class = "highlight">e</span>-Manager</h1>
-                </div>
-                <nav id= "navbar1">
-                    <div class = "navigator">
-                        <ul>
-                            <li><a href = "index.html">Home</a></li>
-                            <li><a href = "about.html">About us</a></li>
-                            <li><a href = "service.html">Service</a></li>
-                            <li><a href = "contact.html">Contact us</a></li>
-                        </ul>
-                    </div>
-                    <div class = "register">
-                        <ul>
-                            <li><a href = "signup.html">Sign-up</a></li>
-                            <li class = "current"><a href = "login.html">Log-in</a></li>
-                        </ul>
-                    </div>
-                </nav>
-    
-                <nav id="navbar2">
-                    <div id="sidebar">
-                        <div id = "sidebar_content">
-                            <ul>
-                                <li class = "current"><a href = "index.html">Home</a></li>
-                                <li><a href = "about.html">About us</a></li>
-                                <li><a href = "service.html">Service</a></li>
-                                <li><a href = "contact.html">Contact us</a></li>
-                                <li><a href = "signup.html">Sign-up</a></li>
-                                <li class = "current"><a href = "login.html">Log-in</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="togglebtn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>  
-                </nav>    
+<html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EM-Manager | Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Anton|Fugaz+One|Great+Vibes|Parisienne|Satisfy" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-dark sticky-top">
+    <div class="container-fluid">
+        <a href="index.html" class="navbar-brand"><img src="./images/logo2.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign-up</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="login.html">login<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+        
+<!--Login Section -->
+<section id = "login">
+    <div class = "container-fluid">
+        <h1>Login</h1>
+        <form>
+            <label for="username"></label>
+            <input type="text" name="username" id="username" class="fa" placeholder="&#xf007  Username">
+            <br><br>
+            
+            <label for="password"></label>
+            <input type="password" name ="password" id="password" class="fa" placeholder ="&#xf084  Password">
+            <br><br>
+
+            <label for="remember"></label>
+            <input type="checkbox" name="remember" id ="remember">
+            <span id ="remember">Remember me</span>
+            <br><br>
+
+            <button type="submit" id="submit"> <i class="fa fa-sign-in"></i> Login</button>
+            <a href="signup.html">Create an Account?</a>
+        </form>
+    </div>
+</section>
+        
+        
+<footer>
+    <div class="container-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-sm-12">
+                <h3>Connect</h3>
             </div>
-      </header>
-      
-      <!--Login Section -->
-      <section id = "login">
-            <div class = "container">
-                <h1>Login</h1>
-                <form>
-                    <label for="username"></label>
-                    <input type="text" name="username" id="username" class="fa" placeholder="&#xf007  Username">
-                    <br><br>
-                   
-                    <label for="password">
-                    <input type="password" name ="password" id="password" class="fa" placeholder ="&#xf084  Password">
-                    </label>
-                    <br><br>
-
-                    <label for="remember">
-                    <input type="checkbox" name="remember" id ="remember">
-                    <span id ="remember">Remember me</span>
-                    </label>
-                    <br><br>
-
-                   <button type="submit" id="submit"> <i class="fa fa-sign-in"></i> Login</button>
-                   <a href="signup.html">Create an Account?</a>
-                </form>
+            <div class="col-12 social padding">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-youtube"></a>
             </div>
-      </section>
-
-      <footer >
-        <p>&copy; 2017 TmD </p>
-      </footer>
-      <script src="script/script.js"></script>
-    </body>
+            <div class="col-sm-12">
+                <p>&copy; 2018 TmD </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
 </html>
