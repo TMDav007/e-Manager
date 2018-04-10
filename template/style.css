@@ -1,0 +1,517 @@
+html,body{
+    height:100%;
+    width:100%;
+    font-family: sans-serif;
+    color: #fff;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"]{
+   width : 97%;
+   border:  #756c5b7e 1px solid;
+   border-radius: 5px;
+   height: 30px;
+   padding: 4px 6px;
+   font-size: 17px;
+}
+
+button[type="submit"]{
+    padding:0px 10px 2px 10px;
+    margin-right: 10px;
+    font-size: 17px;
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+    height: 40px;
+    background-color: #13212a;
+    transition : all 0.5s;
+}
+button[type="submit"]:hover{
+    opacity: 0.8;
+}
+
+.navbar{ 
+    background-color: #13212a;
+    padding: .8rem;
+    color: #9b2323;
+}
+.navbar-brand img{
+    border-radius: 60%;
+}
+.navbar-nav li{
+padding-right: 20px;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height:100%;
+}
+
+.carousel-caption{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.carousel-caption h1{
+    font-family: 'Acme', cursive;
+    font-size: 500%;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 15px #000;
+}
+
+.carousel-caption h3{
+    font-family: 'Great Vibes', cursive;
+    font-weight: thin;
+    font-size: 200%;
+    text-shadow: 1px 1px 10px #000;
+    padding-bottom: 1rem;
+}
+
+.padding{
+    padding-bottom: 2rem;
+}
+
+.service{
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+.service hr{
+    border-top: 2px solid #b4b4b4;
+    width: 10%;
+    margin-top: .3rem;
+    margin-bottom: 1rem;
+}
+
+.service_img{
+    margin: 1rem 0;
+}
+
+#fixed{
+    background: url("images/background.jpg") no-repeat center center fixed;
+    display: table;
+    height: 80%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+   
+}
+
+#fixed h4{
+    position: relative;
+    top: 18em;
+    border: #fff 2px solid;
+    background: transparent;
+    width: 15%;
+    text-align: center;
+    height: 60px;
+    font-size: 17px;
+    padding:15px 15px 0px 15px;
+    margin: 100px auto;
+    color: #fff;
+    opacity: 1;
+    cursor:pointer;
+    transition : all 0.5s;
+}
+
+#fixed h4:hover{
+    background: #000;
+    opacity:0.5
+}
+
+.modal-body form a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.modal-body form a:hover{
+    opacity: 0.5;
+}
+
+
+footer .padding{
+    padding-bottom: 0;
+}
+
+footer h3{
+    margin-top: 1em;
+    color: #fff;
+}
+
+footer{
+    width: 100%;
+    background-color: #13212a;
+    padding: 5% 5% 10% 5%;
+}
+
+.social .fa {
+    padding:15px;
+    font-size: 25px;
+}
+
+.fa-facebook{
+    color: #3b5998;
+}
+
+.fa-twitter{
+    color: #00aced;
+}
+
+.fa-instagram{
+    color: #517fa4;
+}
+
+.fa-youtube{
+    color: #bb0000;
+}
+.fa-facebook:hover,
+.fa-twitter:hover,
+.fa-instagram:hover,
+.fa-youtube:hover {
+    color: #d5d5d5;
+}
+
+footer p{
+    color: #fff;
+}
+
+#login, #signup {
+    margin: 1em auto 6em auto;
+    position: relative;
+    top:3em;
+    width :50%;
+    height: 400px;  
+}
+
+#login h1,#signup h1{
+    font-size: 30px;
+    border-bottom: #756c5b7e 1px solid;
+    opacity: 0.7;
+}
+
+#login span#remember{
+    font-size: 17px;
+}
+.login_content span#remember{
+    position:relative;
+    font-size: 17px;
+}
+
+#login a,#signup a,.login_content a{
+    text-decoration: none;
+    color: #13212a;
+    transition : all 0.5s;
+}
+#login a:hover,#signup a:hover,.login_content a:hover{
+    opacity: 0.7;
+}
+
+/*sign in */
+#signup a{
+    margin-left:10px;
+}
+
+/* Table */
+.table-striped{
+    background-color: #13212a;
+}
+
+#viewTable{
+    margin: 0 auto 30px auto;
+    position: relative;
+    top:4em;
+    margin-bottom: 9em;
+    width :65%;
+    height: 355px;  
+    border: #000 0px solid;
+    border-radius:15px;
+}
+
+#viewTable table{
+    width :100%;
+}
+
+#viewTable tr,#viewTable td{
+    border: #000 0px solid;
+    padding: 10px;
+    text-align:center;
+}
+
+#viewTable thead{
+    font-weight: bold;
+    text-align:center;
+    background-color:#f2f2f2;
+}
+
+
+#viewTable thead #add_evt a, #viewTable thead #add_center a{
+    background-color: transparent;
+    border: #13212a 1px solid;
+    border-radius:5px;
+    font-size:14px;
+    padding:5px 7px;
+    color:#000;
+    margin: 1px;
+    cursor: pointer;
+    
+}
+
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .carousel-caption{
+        top: 45%;
+    }
+    
+    .carousel-caption h1{
+        font-size: 400%;
+    }
+    
+    .carousel-caption h3{
+        font-size: 160%;
+        padding-bottom: 0.5rem;
+    }
+    h1.display-4{
+        font-size: 300%;
+    }
+    p.led{
+        font-size: 100%;
+    }
+    #fixed h4{
+        border: #fff 1px solid;
+        width: 20%;
+        height: 50px;
+        font-size: 100%;
+        padding:9px;
+        margin: 100px auto;
+    }
+    #viewTable h1{
+        font-size: 28px;
+    }
+}
+@media (max-width: 768px) {    
+    .carousel-caption{
+        top: 45%;
+    }
+
+    .carousel-caption h1{
+        width: 100%;
+        font-size: 300%;
+    }
+
+    .carousel-caption h3{
+        font-size: 140%;
+        padding-bottom: 0.5rem;
+    }
+    h1.display-4{
+        font-size: 250%;
+    }
+    p.led{
+        font-size: 100%;
+    }
+    #fixed h4{
+        border: #fff 1px solid;
+        width: 20%;
+        height: 40px;
+        font-size: 85%;
+        padding:9px;
+        margin: 60px auto;
+    }
+    .social a{
+        font-size: 1.5em;
+    }
+    #viewTable{
+        width :75%; 
+    }
+}
+@media (max-width: 576px) {
+    .carousel-indicators{
+        display: none;
+    }
+    .carousel-caption{
+        top: 40%;
+    }
+    
+    .carousel-caption h1{
+        font-size: 200%;
+    }
+    
+    .carousel-caption h3{
+        font-size: 120%;
+    }
+    
+    h1.display-4{
+        font-size: 150%;
+    }
+    p.led{
+        font-size: 80%;
+    }
+    #fixed h4{
+        border: #fff 1px solid;
+        width: 30%;
+        height: 40px;
+        font-size: 85%;
+        padding:9px;
+        margin: 60px auto;
+    }
+
+    footer h3{
+        font-size: 17px;
+    }
+
+    .social .fa {
+        padding:8px;
+        font-size: 15px;
+    }
+    #viewTable{
+        margin: auto;
+        position: relative;
+        top:4em;
+        margin-bottom: 9em;
+        width :95%;
+        height: 355px;  
+        border: #000 0px solid;
+        border-radius:15px;
+    }
+    #viewTable h1{
+        font-size: 24px;
+    }
+    #viewTable table thead{
+        font-size:14px;
+    }
+    #viewTable table tbody {
+        font-size: 14px;
+    }
+    
+    #viewTable thead #add_evt a, #viewTable thead #add_center a{
+        border-radius:5px;
+        font-size:12px;
+        
+    }
+}
+
+@media (max-width: 375px) {
+    .carousel-indicators{
+        display: none;
+    }
+    .carousel-caption{
+        top: 35%;
+    }
+    
+    .carousel-caption h1{
+        font-size: 150%;
+    }
+    
+    .carousel-caption h3{
+        font-size: 90%;
+    }
+    
+    h1.display-4{
+        font-size: 100%;
+    }
+
+    .service{
+        padding-top: 1rem;
+    }
+    
+    .service hr{
+        border-top: 1px solid #b4b4b4;
+        width: 10%;
+        margin-top: .1rem;
+        margin-bottom: .5rem;
+    }
+    
+    .service_img{
+        margin: .5rem 0;
+    }
+
+    .service_img h3{
+        font-size: 16px;
+    }
+    
+    p.led{
+        font-size: 70%;
+    }
+    #fixed h4{
+        border: #fff 1px solid;
+        width: 35%;
+        height: 30px;
+        font-size: 55%;
+        padding: 8px;
+        margin: 60px auto;
+    }
+
+    footer h3{
+        font-size: 17px;
+    }
+
+    footer p{
+        font-size: 13px;
+    }
+
+    .social .fa {
+        padding:8px;
+        font-size: 15px;
+    }
+
+    #login, #signup {
+        margin: 1em auto 6em auto;
+        position: relative;
+        top:2em;
+        width :90%;
+        height: 400px;  
+    }
+
+    button[type="submit"]{
+        padding:0px 10px 2px 10px;
+        margin-right: 13px;
+        font-size: 14px;
+    }
+    #login span#remember,
+    .login_content span#remember,
+    #login a,
+    #signup a,
+    .login_content a{
+        font-size: 14px;
+    }
+    #viewTable{
+        margin: 1rem 0 2rem 0;
+        position: relative;
+        top:8em;
+        padding: 0 8px;
+        margin-bottom: 8em;
+        width :100%;
+        height: 355px;  
+        border: #000 0px solid;
+        border-radius:15px;
+    }
+    #viewTable h1{
+        font-size: 20px;
+    }
+    #viewTable table thead{
+        font-size:10px;
+    }
+    #viewTable table tbody {
+        font-size: 10px;
+    }
+    
+    #viewTable thead #add_evt a, #viewTable thead #add_center a{
+        border-radius:5px;
+        font-size:10px;
+        
+    }
+}
+
+
+/*-- firefox Bug fix --*/
+.carousel-item {
+    transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+}

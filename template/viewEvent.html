@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EM-Manager | View-Event</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Anton|Fugaz+One|Great+Vibes|Parisienne|Satisfy" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+ <!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-dark sticky-top">
+    <div class="container-fluid">
+        <a href="index.html" class="navbar-brand"><img src="./images/logo2.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="viewEvent.html">View-Event<span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="">logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+        
+<section id="viewTable">
+    <div class="container">
+        <h1>View Event</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="7" id="add_evt" class="text-right" data-toggle="modal" data-target="#exampleModal"><a>Add-Event</a></td>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add center</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <fieldset><legend><h1>Edit-Event</h1></legend>
+                                            <label for="location">Location :  </label>
+                                            <select name="location">
+                                                <option value="lag" selected>Lagos</option>
+                                                <option value="ib">Ibadan</option>
+                                                <option value="abj">Abuja</option>
+                                            </select>
+                                            <br><br>
+                                            
+                                            <label for="event">Event-Center : </label>
+                                            <select name="event">
+                                                <option value="oriental">Oritental</option>
+                                                <option value="Eko">Eko-Suite</option>
+                                                <option value="ABC">ABC-Center</option>
+                                            </select>
+                                            <br><br>
+                        
+                                            <label for="event">Event-type : </label>
+                                            <select name="event">
+                                                <option value="Wedding">Wedding</option>
+                                                <option value="Seminar">Seminar</option>
+                                                <option value="Conference">Conference</option>
+                                                <option value="Concert">Concert</option>
+                                                <option value="birthday">Birthday</option>
+                                                <option value="others">Others</option>
+                                            </select>
+                                        
+                        
+                                            <label for="others">Others:</label>
+                                            <input type="text" name="others" id="others"  placeholder="">
+                                            <br><br>
+                        
+                                            <label for="date">Date:</label>
+                                            <input type="date" name="date" id="date"  placeholder="">
+                                            <br><br>
+                        
+                                            <label for="">Duration: </label>
+                                            <select name="duration">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select><span id="hour"> hour(s)</span>
+                                            <br><br>
+                        
+                                            <label for="amount">Amount:</label>
+                                            <input type="text" name="amount" id="amount"  Value="#200,000">
+                                            <br><br>
+                                            <br><br>
+                        
+                                            <button type="submit" id="addEvenBtn">Edit-Event</button>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    
+                </tr>
+                <tr>
+                    <td>S/N</td>
+                    <td>Event-Type</td>
+                    <td>Event-Location</td>
+                    <td>State</td>
+                    <td>Date</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr> 
+                    <td>1</td>
+                    <td>Wedding</td>
+                    <td>Oriental</td>
+                    <td>Lagos</td>
+                    <td>12/12/2018</td>
+                    <td class="modal_evtView"><a class="fa">&#xf044</a></td>
+                    <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Wedding</td>
+                    <td>Oriental</td>
+                    <td>Lagos</td>
+                    <td>12/12/2018</td>
+                    <td class="modal_evtView"><a class="fa">&#xf044</a></td>
+                    <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Wedding</td>
+                    <td>Oriental</td>
+                    <td>Lagos</td>
+                    <td>12/12/2018</td>
+                    <td class="modal_evtView"><a class="fa">&#xf044</a></td>
+                    <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Wedding</td>
+                    <td>Oriental</td>
+                    <td>Lagos</td>
+                    <td>12/12/2018</td>
+                    <td class="modal_evtView"><a class="fa">&#xf044</a></td>
+                    <td class="modal_delEvt"><a class="fa">&#xf00d</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+          
+<footer>
+    <div class="container-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-sm-12">
+                <h3>Connect</h3>
+            </div>
+            <div class="col-12 social padding">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-youtube"></a>
+            </div>
+            <div class="col-sm-12">
+                <p>&copy; 2018 TmD </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
