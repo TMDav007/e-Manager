@@ -1,139 +1,172 @@
 <!DOCTYPE html>
-<html class="no-js"> <!--<![endif]-->
+<html lang="en"> <!--<![endif]-->
    <head>
        <meta charset="utf-8">
        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>e-Manager | welcome</title>
-       <meta name="description" content="">
+       <title>EM-Manager | welcome</title>
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
        <link rel = "stylesheet" href="style.css">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
        <link href="https://fonts.googleapis.com/css?family=Acme|Anton|Fugaz+One|Great+Vibes|Parisienne|Satisfy" rel="stylesheet">
        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
    </head>
    <body>
-      <header>
-          <div class = "container">
-              <div id = "branding">
-                   <h1><span class = "highlight">e</span>-Manager</h1>
-              </div>
-
-              <div id = "branding2">
-                    <h1><span class = "highlight">e</span>-Manager</h1>
-               </div>
-
-              <nav id= "navbar1">
-                   <div class = "navigator">
-                       <ul>
-                           <li class = "current"><a href = "index.html">Home</a></li>
-                           <li><a href = "#about">About us</a></li>
-                           <li><a href = "#service">Service</a></li>
-                           <li><a href = "#contact">Contact us</a></li>
-                       </ul>
-                   </div>
-                   <div class = "register">
-                       <ul>
-                           <li><a href = "signup.html">Sign-up</a></li>
-                           <li><a href = "login.html">Log-in</a></li>
-                       </ul>
-                   </div>
-              </nav>
-           
-              <nav id="navbar2">
-                   <div id="sidebar">
-                       <div id = "sidebar_content">
-                           <ul>
-                               <li class = "current"><a href = "index.html">Home</a></li>
-                               <li><a href = "#about">About us</a></li>
-                               <li><a href = "#service">Service</a></li>
-                               <li><a href = "#contact">Contact us</a></li>
-                               <li><a href = "signup.html">Sign-up</a></li>
-                               <li><a href = "login.html">Log-in</a></li>
-                           </ul>
-                       </div>
-                   </div>
-                   <div id="togglebtn">
-                       <span></span>
-                       <span></span>
-                       <span></span>
-                   </div>  
-              </nav>    
-          </div>
-      </header>
-      <section id = "intro">
-           <div class = "container">
-               <h1>Plan your event with ease</h1>
-               <p>Turn the stress of planning your event to fun, 
-                   remove the stress, make event planning an excitement</p>
-               <h4 id = "modal_login">Connect with us</h4>
-
-               <div id ="login_box" class ="login">
-                   <section class="login_content">
-                       <span class="close">&times;</span>
-                       <div class = "container">
-                           <h1 id= "log">Login</h1>
-                           <form>
-                               <label for="username"></label>
-                               <input type="text" name="username" id="username" class="fa" placeholder="&#xf007  Username">
-                               <br><br>
-                               
-                               <label for="password"></label>
-                               <input type="password" name ="password" id="password" class="fa" placeholder ="&#xf084  Password">
-                               <br><br>
-           
-                               <input type="checkbox" name="remember" id ="remember">
-                               <span id ="remember">Remember me</span>
-                               <br><br>
-           
-                               <button type="submit" id="submit"> <i class="fa fa-sign-in"></i> Login</button>
-                               <a href="signup.html">Create an Account?</a>
-                           </form>
-                       </div>
-                   </section>
-               </div>
-           </div>
-      </section>
-
-      <section id = "about">
-          <div class = "container">
-              <div class ="about_content read-more">
-                   <h1>About us</h1>
-                   <hr>
-                   <p>It gives us great pleasure to introduce, Classique Events Place. A one and a half acre piece of property,
-                        uniquely brick built with the state of the art facility within a well-kept vicinity.
-                        It is spacious, fully air-conditioned and highly insulated with capacity to host up 
-                        to 1000 guests in banquet settings and 2000 guests in theater settings. This makes 
-                        it convenient for us to host both corporate and retail events in a serene environment.</p>
-                    <p>We can conveniently host weddings, corporate functions, parties, banquets, church services and more!
-                         It further has the capacity to accommodate over 300 cars parked within the premises without 
-                         obstructing free flow of traffic along the high way.
-                    </p>
-                    <p>We bring a fresh, unique approach to the event management industry. We are not party planners. We are strategic
-                         event management partners. We understand that a properly executed event can be leveraged to support an organization’s 
-                         strategic vision, incorporated into a company’s marketing plan, or used to build networks and client loyalty.</p>
-                           
-                       <p> We approach every project with meticulous attention to detail and obsessive precision. Regardless of size and scope, 
-                           we treat your event like a business with clear strategic goals, defined milestones, and a comprehensive plan to ensure 
-                           that your event is delivered on time and on budget. At Spark, we put your organization first. We learn about your business, 
-                           we focus on your challenges, and we plan events to support your goals.</p>
-                           
-                       <p> Laser sharp focus, unparalleled professionalism and exceptional service means clients can trust that their event is in capable hands. 
-                    </p>
-              </div>
-           </div>
-      </section>
-
-      <section id= "service">
-           <div class = "container">
-               <h1>Service</h1>
-               <hr>
-               <img src="image/service_background.jpg">
-           </div>
-      </section>
-      <footer>
-               <p>&copy; 2017 TmD </p>
-      </footer>
-      <script src="script/indexScript.js"></script>
+     
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-dark sticky-top">
+    <div class="container-fluid">
+        <a href="index.html" class="navbar-brand"><img src="./images/logo2.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                </li>
+    
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign-up</a>
+                </li>
+    
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+        
+        <!-- Home(slides) -->
+    <div id="slides" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+            <li data-target="#slides" data-slide-to="0" class="active"></li>
+            <li data-target="#slides" data-slide-to="1"></li>
+            <li data-target="#slides" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="./images/wedding.jpg">
+            <div class="carousel-caption">
+                <h1 class ="display-2">Plan with Ease</h1>
+                <h3>Let us make your wedding a memorable one</h3>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img  src="./images/party.jpg">
+            <div class="carousel-caption">
+                    <h1 class ="display-2">Party without stress</h1>
+                    <h3>you can party without worrying about planning, thats what we do</h3>
+            </div>    
+        </div>
+        <div class="carousel-item">
+            <img  src="./images/birthday.jpg">
+            <div class="carousel-caption">
+                <h1 class ="display-2">Enjoy your Birthday</h1>
+                <h3>Have a memorable birthday at affordable price.</h3>
+            </div>
+        </div>    
+    </div>
+    </div> 
+        
+    <!-- services -->
+    <div class="container-fluid padding">
+        <div class="row service text-center">
+            <div class="col-12">
+                <h1 class="display-4">Services</h1>
+            </div>
+            <hr>
+            <div class="col-12">
+                <p class="led">We can conveniently host weddings, corporate functions, parties, banquets, church services and more!
+                        It further has the capacity to accommodate over 300 cars parked within the premises without 
+                        obstructing free flow of traffic along the high way. Our vision is to make your event to be well executed, that's what we do.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid padding">
+        <div class="row text-center padding">
+        <div class="col-xs-12 col-sm-6 col-md-4  service_img">
+            <img class="img-fluid" src="images/inside_hall.jpg" >
+            <h3>Well decorated hall</h3>
+            <p class="led">We conveniently host your events in our well decorated all, well ventilated, with a capacity of about 700 people.
+            </p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 service_img">
+            <img class="img-fluid" src="images/parking.jpg" >
+            <h3>Parking space</h3>
+            <p class="led">With over 300 car park spaces with security, you have nothing to worry about, your porperty is safe.
+            </p>
+        </div>
+        <div class="col-sm-12 col-md-4 service_img">
+            <img class="img-fluid" src="images/user.jpg" >
+            <h3>ushering services</h3>
+            <p class="led">Our ushering services are top notch, well reliable to serve you well.
+            </p>
+        </div>
+    </div>
+    </div>
+    
+    <!-- fixed Image -->
+        <div id="fixed">
+        <h4 data-toggle="modal" data-target="#exampleModal">Connect with us</h4>
+            <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="username"></label>
+                        <input type="text" name="username" id="username" class="fa" placeholder="&#xf007  Username">
+                        <br><br>
+    
+                        <label for="password"></label>
+                        <input type="password" name ="password" id="password" class="fa" placeholder ="&#xf084  Password">
+                        <br><br>
+    
+                        <input type="checkbox" name="remember" id ="remember">
+                        <span id ="remember">Remember me</span>
+                        <br><br>
+    
+                        <button type="submit" class="btn btn-secondary text-center"> <i class="fa fa-sign-in"></i> Login</button>
+                        <a href="signup.html">Create an Account?</a>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center padding">
+                <div class="col-sm-12">
+                    <h3>Connect</h3>
+                </div>
+                <div class="col-12 social padding">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+                <div class="col-sm-12">
+                    <p>&copy; 2018 TmD </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
    </body>
 </html>
