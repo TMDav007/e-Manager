@@ -20,7 +20,3 @@ before_script:
   - createdb database_test --username=tolu
   - sequelize db:migrate
 
-  
-
-COVERALLS_REPO_TOKEN: tOuP1d8x1L3MStkbS2AsVw9H4S360tgFO
-
